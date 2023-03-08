@@ -18,6 +18,15 @@ public:
     {
     }
 
+    /// \brief Get the x-coordinate of the vector
+    constexpr double x() const& noexcept { return m_vec[0]; }
+
+    /// \brief Get the y-coordinate of the vector
+    constexpr double y() const& noexcept { return m_vec[1]; }
+
+    /// \brief Get the z-coordinate of the vector
+    constexpr double z() const& noexcept { return m_vec[2]; }
+
 private:
     std::array<double, 3> m_vec {};
 };
