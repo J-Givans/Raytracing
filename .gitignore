@@ -6,3 +6,6 @@ build
 
 # But do track this .gitignore file
 !.gitignore
+
+# Do not track the images.ppm file output
+images.ppm
