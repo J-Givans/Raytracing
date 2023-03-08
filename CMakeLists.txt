@@ -20,6 +20,10 @@ add_executable("${CMAKE_PROJECT_NAME}")
 target_sources("${CMAKE_PROJECT_NAME}"
     PUBLIC
         main.cpp
+    PRIVATE
+        ${PROJECT_SOURCE_DIR}/Vec3.hpp
+        ${PROJECT_SOURCE_DIR}/Colour.hpp
+        ${PROJECT_SOURCE_DIR}/Colour.cpp
 )
 
 target_link_libraries("${CMAKE_PROJECT_NAME}" 
