@@ -2,6 +2,7 @@
 #define VEC3_HPP
 
 #include <array>
+#include <gsl/assert>
 
 class Vec3
 {
@@ -30,6 +31,24 @@ public:
     /// \brief Negate this vector.
     /// \returns A new vector with x, y, and z-coordinates of opposite polarity
     constexpr Vec3 operator-() const& noexcept { return Vec3(-m_vec[0], -m_vec[1], -m_vec[2]); }
+
+    /// \brief Get the vector coordinate at index i
+    /// \param i An index into the vector
+    /// \returns A copy of the coordinate at index i
+    constexpr double operator[](std::size_t const i) const& noexcept 
+    {
+        Expects(i >= 0 and i <= 2);
+        return m_vec[i];
+    }
+
+    /// \brief Get the vector coordinate at index i
+    /// \param i An index into the vector
+    /// \returns A reference to the coordinate at index i
+    constexpr double& operator[](std::size_t const i) & noexcept
+    {
+        Expects(i >= 0 and i <= 2);
+        return m_vec[i];
+    }
 
 private:
     std::array<double, 3> m_vec {};
