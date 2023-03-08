@@ -151,4 +151,11 @@ constexpr Vec3 operator/(Vec3 const& v, double const t) noexcept
     return (1 / t) * v;
 }
 
+/// \brief Get the dot product of the two vectors @param u and @param v
+/// \return The dot (or inner) product of @param u and @param v
+constexpr double dot(Vec3 const& u, Vec3 const& v) noexcept
+{
+    return (u[0] * v[0]) + (u[1] * v[1]) + (u[2] * v[2]);
+}
+
 #endif
