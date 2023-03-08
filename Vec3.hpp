@@ -50,6 +50,18 @@ public:
         return m_vec[i];
     }
 
+    /// \brief Perform component-wise vector addition
+    /// \param v The vector to be added to this vector
+    /// \returns This vector with the results of the vector addition as its components
+    constexpr Vec3& operator+=(Vec3 const& v) & noexcept
+    {
+        m_vec[0] += v[0];
+        m_vec[1] += v[1];
+        m_vec[2] += v[2];
+
+        return *this;
+    }
+
 private:
     std::array<double, 3> m_vec {};
 };
