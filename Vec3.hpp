@@ -130,4 +130,25 @@ constexpr Vec3 operator*(Vec3 const& u, Vec3 const& v) noexcept
     return Vec3(u[0] * v[0], u[1] * v[1], u[2] * v[2]);
 }
 
+/// \brief Create a new vector from scaling another vector
+/// \returns A new vector which is just @param v scaled by a factor of @param t
+constexpr Vec3 operator*(double const t, Vec3 const& v) noexcept
+{
+    return Vec3(t * v[0], t * v[1], t * v[2]);
+}
+
+/// \brief Create a new vector from scaling another vector
+/// \returns A new vector which is just @param v scaled by a factor of @param t
+constexpr Vec3 operator*(Vec3 const& v, double const t) noexcept
+{
+    return t * v;
+}
+
+/// \brief Create a new vector from scaling another vector
+/// \returns A new vector which is just @param v scaled by a factor of 1 / @param t
+constexpr Vec3 operator/(Vec3 const& v, double const t) noexcept
+{
+    return (1 / t) * v;
+}
+
 #endif
