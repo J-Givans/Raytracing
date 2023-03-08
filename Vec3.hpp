@@ -62,6 +62,26 @@ public:
         return *this;
     }
 
+    /// \brief Scale this vector by a factor of t
+    /// \param t The scalar with which the vector is multiplied
+    /// \returns This vector scaled by a factor of t
+    constexpr Vec3& operator*=(double const t) & noexcept
+    {
+        for (auto& elem : m_vec) {
+            elem *= t;
+        }
+
+        return *this;
+    }
+
+    /// \brief Scale this vector by a factor of 1/t
+    /// \param t The scalar with which the vector is multiplied
+    /// \returns This vector scaled by a factor of 1/t
+    constexpr Vec3& operator/=(double const t) & noexcept
+    {
+        return *this *= (1 / t);
+    }
+
 private:
     std::array<double, 3> m_vec {};
 };
