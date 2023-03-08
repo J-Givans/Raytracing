@@ -24,6 +24,10 @@ public:
     /// \returns The origin of the ray
     constexpr Point3 getOrigin() const& noexcept { return m_origin; }
 
+    /// \brief Get the direction of this ray
+    /// \returns The direction towards which the ray is travelling
+    constexpr Vec3 getDirection() const& noexcept { return m_direction; }
+
 private:
     Point3 m_origin;
     Vec3 m_direction;
