@@ -98,7 +98,7 @@ public:
     }
 
 private:
-    std::array<double, 3> m_vec {};
+    std::array<double, 3> m_vec {0, 0, 0};
 };
 
 /// \brief Write the contents of the vector @param v to the output stream @param out
