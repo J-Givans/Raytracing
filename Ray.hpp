@@ -20,6 +20,10 @@ public:
     {
     }
 
+    /// \brief Get the origin of this ray
+    /// \returns The origin of the ray
+    constexpr Point3 getOrigin() const& noexcept { return m_origin; }
+
 private:
     Point3 m_origin;
     Vec3 m_direction;
