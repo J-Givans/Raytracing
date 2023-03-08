@@ -27,6 +27,10 @@ public:
     /// \brief Get the z-coordinate of the vector
     constexpr double z() const& noexcept { return m_vec[2]; }
 
+    /// \brief Negate this vector.
+    /// \returns A new vector with x, y, and z-coordinates of opposite polarity
+    constexpr Vec3 operator-() const& noexcept { return Vec3(-m_vec[0], -m_vec[1], -m_vec[2]); }
+
 private:
     std::array<double, 3> m_vec {};
 };
