@@ -5,6 +5,7 @@
 #include <cmath>
 
 #include <gsl/assert>
+#include <ostream>
 
 class Vec3
 {
@@ -99,5 +100,13 @@ public:
 private:
     std::array<double, 3> m_vec {};
 };
+
+/// \brief Write the contents of the vector @param v to the output stream @param out
+/// This function is not marked @c noexcept because @c std::ostream might throw.
+/// \returns A reference to the output stream @param out
+inline std::ostream& operator<<(std::ostream& out, Vec3 const& v)
+{
+    return out << v[0] << ' ' << v[1] << ' ' << v[2];
+}
 
 #endif
