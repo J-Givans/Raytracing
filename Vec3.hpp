@@ -158,4 +158,16 @@ constexpr double dot(Vec3 const& u, Vec3 const& v) noexcept
     return (u[0] * v[0]) + (u[1] * v[1]) + (u[2] * v[2]);
 }
 
+/// \brief Get the cross product of two vectors
+/// \param[in] u, v The vectors whose cross product is to be computed
+/// \returns The cross product of @param u and @param v
+constexpr Vec3 cross(Vec3 const& u, Vec3 const& v) noexcept
+{
+    return Vec3(
+        u[1] * v[2] - u[2] * v[1],
+        u[2] * v[0] - u[0] * v[2],
+        u[0] * v[1] - u[1] * v[0]  
+    );
+}
+
 #endif
