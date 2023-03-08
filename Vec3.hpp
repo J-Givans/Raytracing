@@ -123,4 +123,11 @@ constexpr Vec3 operator-(Vec3 const& u, Vec3 const& v) noexcept
     return Vec3(u[0] - v[0],u[1] - v[1], u[2] - v[2]);
 }
 
+/// \brief Create a new vector from the component-wise products of two other vectors
+/// \returns A new vector whose coordinates are the products of @param u and @param v coordinates
+constexpr Vec3 operator*(Vec3 const& u, Vec3 const& v) noexcept
+{
+    return Vec3(u[0] * v[0], u[1] * v[1], u[2] * v[2]);
+}
+
 #endif
