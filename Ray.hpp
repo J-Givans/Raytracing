@@ -28,6 +28,16 @@ public:
     /// \returns The direction towards which the ray is travelling
     constexpr Vec3 getDirection() const& noexcept { return m_direction; }
 
+    /// \brief Get the point at distance @param t units from the origin
+    /// \param[in] t The distance from the origin. 
+    ///     Positive values of t give points in front of the origin.
+    ///     Negative values give points behind the origin
+    /// \returns The point @param t units away from the origin.
+    constexpr Point3 at(double const t) const& noexcept
+    {
+        return m_origin + (t * m_direction);
+    }
+
 private:
     Point3 m_origin;
     Vec3 m_direction;
