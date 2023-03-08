@@ -13,10 +13,10 @@ int main()
     std::cout << "P3\n" << imgWidth << ' ' << imgHeight << "\n255\n";
 
     for (auto j = imgHeight - 1; j >= 0; --j) {
-        std::cerr << "\rScanlines remaining: " << j << ' ' << std::flush;
+        std::cerr << "\rScanlines remaining: " << j << '\n' << std::flush;
 
         for (auto i = 0; i < imgWidth; ++i) {
-            Colour pxColour((static_cast<double>(i) / imgWidth - 1), (static_cast<double>(j) / imgHeight - 1), 0.25);
+            Colour pxColour(static_cast<double>(i) / (imgWidth - 1), static_cast<double>(j) / (imgHeight - 1), 0.25);
             writeColour(std::cout, pxColour);
         }
     }
