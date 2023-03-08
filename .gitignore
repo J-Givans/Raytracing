@@ -1,0 +1,8 @@
+# Ignore the entire build directory
+build
+
+# Ignore all files with a leading .
+.*
+
+# But do track this .gitignore file
+!.gitignore
