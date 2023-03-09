@@ -88,9 +88,9 @@ double hitSphere(Point3 const& centre, double const radius, Ray const& ray)
 {
     Vec3 oc = ray.getOrigin() - centre;
     
-    double const a = dot(ray.getDirection(), ray.getDirection());
+    double const a = ray.getDirection().lengthSquared();
     double const b = 2.0 * dot(oc, ray.getDirection());
-    double const c = dot(oc, oc) - (radius * radius);
+    double const c = oc.lengthSquared() - (radius * radius);
     double const discriminant = (b * b) - (4 * a * c);
     
     if (discriminant < 0) {
