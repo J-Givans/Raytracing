@@ -9,6 +9,14 @@
 /// \returns A blended colour of white and blue
 constexpr Colour rayColour(Ray const& ray) noexcept;
 
+/// \brief
+/// \param[in]
+/// \param[in]
+/// \param[in]
+/// \returns true If the ray hits the sphere
+/// \returns false Otherwise
+constexpr bool hitSphere(Point3 const& centre, double const radius, Ray const& ray);
+
 int main()
 {
     // Image
@@ -67,4 +75,16 @@ constexpr Colour rayColour(Ray const& ray) noexcept
     // Linearly blend white and blue depending on the height of the y coordinate
     // blendedValue = (1 - t) * startValue + t * endValue
     return (1.0 - t) * Colour(1.0, 1.0, 1.0) + t * Colour(0.5, 0.7, 1.0);
+}
+
+constexpr bool hitSphere(Point3 const& centre, double const radius, Ray const& ray)
+{
+    Vec3 oc = ray.getOrigin() - centre;
+    
+    double const a = dot(ray.getDirection(), ray.getDirection());
+    double const b = 2.0 * dot(oc, ray.getDirection());
+    double const c = dot(oc, oc) - (radius * radius);
+    double const discriminant = (b * b) - (4 * a * c);
+    
+    return discriminant > 0;
 }
