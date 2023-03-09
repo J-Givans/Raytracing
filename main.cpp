@@ -89,7 +89,7 @@ double hitSphere(Point3 const& centre, double const radius, Ray const& ray)
     Vec3 oc = ray.getOrigin() - centre;
     
     double const a = ray.getDirection().lengthSquared();
-    double const b = 2.0 * dot(oc, ray.getDirection());
+    double const b = dot(oc, ray.getDirection());
     double const c = oc.lengthSquared() - (radius * radius);
     double const discriminant = (b * b) - (4 * a * c);
     
@@ -98,6 +98,6 @@ double hitSphere(Point3 const& centre, double const radius, Ray const& ray)
     }
     else {
         // Return the value of t which satisfies the ray-sphere equation (R(t) - C)^2 = radius^2
-        return (-b - std::sqrt(discriminant)) / (2.0 * a);
+        return (-b - std::sqrt(discriminant)) / a;
     }
 }
