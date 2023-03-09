@@ -69,12 +69,15 @@ int main()
 
 constexpr Colour rayColour(Ray const& ray) noexcept
 {
-    if (hitSphere(Point3(0, 0, -1), 0.5, ray)) {
-        return Colour(1, 0, 0);
+    double t = hitSphere(Point3(0, 0, -1), 0.5, ray);
+
+    if (t > 0.0) {
+        Vec3 normal = unitVector(ray.at(t) - Vec3(0, 0, -1));
+        return 0.5 * Colour(normal.x() + 1, normal.y() + 1, normal.z() + 1);
     }
 
     Vec3 unitDirection = unitVector(ray.getDirection());    // scale the ray direction to unit length
-    auto t = 0.5 * (unitDirection.y() + 1.0);
+    t = 0.5 * (unitDirection.y() + 1.0);
     
     // Linearly blend white and blue depending on the height of the y coordinate
     // blendedValue = (1 - t) * startValue + t * endValue
