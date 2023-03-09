@@ -2,6 +2,7 @@
 #include "Vec3.hpp"
 #include "Ray.hpp"
 
+#include <cmath>
 #include <iostream>
 
 /// \brief Linearly blend white and blue colours
@@ -9,13 +10,12 @@
 /// \returns A blended colour of white and blue
 constexpr Colour rayColour(Ray const& ray) noexcept;
 
-/// \brief
-/// \param[in]
-/// \param[in]
-/// \param[in]
-/// \returns true If the ray hits the sphere
-/// \returns false Otherwise
-constexpr bool hitSphere(Point3 const& centre, double const radius, Ray const& ray);
+/// \brief Get the point at which a ray hits a sphere
+/// \param[in] centre The centre of the sphere
+/// \param[in] radius The radius of the sphere
+/// \param[in] ray The ray under investigation
+/// \returns The hit point on the sphere
+double hitSphere(Point3 const& centre, double const radius, Ray const& ray);
 
 int main()
 {
@@ -81,7 +81,7 @@ constexpr Colour rayColour(Ray const& ray) noexcept
     return (1.0 - t) * Colour(1.0, 1.0, 1.0) + t * Colour(0.5, 0.7, 1.0);
 }
 
-constexpr bool hitSphere(Point3 const& centre, double const radius, Ray const& ray)
+double hitSphere(Point3 const& centre, double const radius, Ray const& ray)
 {
     Vec3 oc = ray.getOrigin() - centre;
     
@@ -90,5 +90,11 @@ constexpr bool hitSphere(Point3 const& centre, double const radius, Ray const& r
     double const c = dot(oc, oc) - (radius * radius);
     double const discriminant = (b * b) - (4 * a * c);
     
-    return discriminant > 0;
+    if (discriminant < 0) {
+        return -1.0;
+    }
+    else {
+        // Return the value of t which satisfies the ray-sphere equation (R(t) - C)^2 = radius^2
+        return (-b - std::sqrt(discriminant)) / (2.0 * a);
+    }
 }
