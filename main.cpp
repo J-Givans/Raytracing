@@ -69,6 +69,10 @@ int main()
 
 constexpr Colour rayColour(Ray const& ray) noexcept
 {
+    if (hitSphere(Point3(0, 0, -1), 0.5, ray)) {
+        return Colour(1, 0, 0);
+    }
+
     Vec3 unitDirection = unitVector(ray.getDirection());    // scale the ray direction to unit length
     auto t = 0.5 * (unitDirection.y() + 1.0);
     
