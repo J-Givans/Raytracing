@@ -29,6 +29,11 @@ target_sources("${CMAKE_PROJECT_NAME}"
         ${PROJECT_SOURCE_DIR}/Common.hpp
         ${PROJECT_SOURCE_DIR}/Colour.hpp
         ${PROJECT_SOURCE_DIR}/Colour.cpp
+        ${PROJECT_SOURCE_DIR}/Hittable.hpp
+        ${PROJECT_SOURCE_DIR}/HittableList.hpp
+        ${PROJECT_SOURCE_DIR}/HittableList.cpp
+        ${PROJECT_SOURCE_DIR}/Sphere.hpp
+        ${PROJECT_SOURCE_DIR}/Sphere.cpp
 )
 
 target_link_libraries("${CMAKE_PROJECT_NAME}" 
