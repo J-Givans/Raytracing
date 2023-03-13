@@ -27,4 +27,22 @@ inline double randomDouble()
     return distribution(generator);
 }
 
+/// \brief Clamps a value between a pair of boundary value
+/// \param[in] x The input value to be clamped
+/// \param[in] min The lower bound
+/// \param[in] max The upper bound
+/// \returns A value lying within the range [min, max]
+constexpr double clamp(double const x, double const min, double const max) noexcept
+{
+    if (x < min) {
+        return min;
+    }
+    else if (x > max) {
+        return max;
+    }
+    else {
+        return x;
+    }
+}
+
 #endif
