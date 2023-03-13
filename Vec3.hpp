@@ -15,9 +15,9 @@ public:
     constexpr Vec3() noexcept = default;
 
     /// \brief Constructor. Initialises the vector with parameters x, y, and z
-    /// @param x The x-coordinate of the vector
-    /// @param y The y-coordinate of the vector
-    /// @param z The z-coordinate of the vector
+    /// \param[in] x The x-coordinate of the vector
+    /// \param[in] y The y-coordinate of the vector
+    /// \param[in] z The z-coordinate of the vector
     constexpr Vec3(double const x, double const y, double const z) noexcept : m_vec { x, y, z }
     {
     }
@@ -36,7 +36,7 @@ public:
     constexpr Vec3 operator-() const& noexcept { return Vec3(-m_vec[0], -m_vec[1], -m_vec[2]); }
 
     /// \brief Get the vector coordinate at index i
-    /// \param i An index into the vector
+    /// \param[in] i An index into the vector
     /// \returns A copy of the coordinate at index i
     constexpr double operator[](std::size_t const i) const& noexcept 
     {
@@ -45,7 +45,7 @@ public:
     }
 
     /// \brief Get the vector coordinate at index i
-    /// \param i An index into the vector
+    /// \param[in] i An index into the vector
     /// \returns A reference to the coordinate at index i
     constexpr double& operator[](std::size_t const i) & noexcept
     {
@@ -54,7 +54,7 @@ public:
     }
 
     /// \brief Perform component-wise vector addition
-    /// \param v The vector to be added to this vector
+    /// \param[in] v The vector to be added to this vector
     /// \returns This vector with the results of the vector addition as its components
     constexpr Vec3& operator+=(Vec3 const& v) & noexcept
     {
@@ -66,7 +66,7 @@ public:
     }
 
     /// \brief Scale this vector by a factor of t
-    /// \param t The scalar with which the vector is multiplied
+    /// \param[in] t The scalar with which the vector is multiplied
     /// \returns This vector scaled by a factor of t
     constexpr Vec3& operator*=(double const t) & noexcept
     {
@@ -78,7 +78,7 @@ public:
     }
 
     /// \brief Scale this vector by a factor of 1/t
-    /// \param t The scalar with which the vector is multiplied
+    /// \param[in] t The scalar with which the vector is multiplied
     /// \returns This vector scaled by a factor of 1/t
     constexpr Vec3& operator/=(double const t) & noexcept
     {
