@@ -173,9 +173,6 @@ constexpr Vec3 cross(Vec3 const& u, Vec3 const& v) noexcept
 /// \brief Get the unit vector of a vector
 /// \param[in] v The vector whose unit vector is to be computed
 /// \returns The unit vector of @param[in] v
-Vec3 unitVector(Vec3 const& v) noexcept
-{
-    return v / v.length();
-}
+Vec3 unitVector(Vec3 const& v) noexcept;
 
 #endif
