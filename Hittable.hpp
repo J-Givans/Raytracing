@@ -20,7 +20,7 @@ struct HitRecord
 constexpr void HitRecord::setFaceNormal(Ray const& ray, Vec3 const& outwardNormal) & noexcept
 {
     auto const setFrontFace = [&ray, &outwardNormal]() noexcept {
-        if (dot(ray.getDirection(), outwardNormal) < 0) {
+        if (dot(ray.getDirection(), outwardNormal) > 0) {
             return false;
         }
 
@@ -28,7 +28,6 @@ constexpr void HitRecord::setFaceNormal(Ray const& ray, Vec3 const& outwardNorma
     };
 
     frontFace = setFrontFace();
-
     normal = frontFace ? outwardNormal : -outwardNormal;
 }
 
