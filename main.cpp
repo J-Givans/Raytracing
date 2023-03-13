@@ -10,13 +10,6 @@
 /// \returns A blended colour of white and blue
 Colour rayColour(Ray const& ray, Hittable const& world) noexcept;
 
-/// \brief Get the point at which a ray hits a sphere
-/// \param[in] centre The centre of the sphere
-/// \param[in] radius The radius of the sphere
-/// \param[in] ray The ray under investigation
-/// \returns The hit point on the sphere
-double hitSphere(Point3 const& centre, double const radius, Ray const& ray);
-
 int main()
 {
     // Image
@@ -84,22 +77,4 @@ Colour rayColour(Ray const& ray, Hittable const& world) noexcept
     // Linearly blend white and blue depending on the height of the y coordinate
     // blendedValue = (1 - t) * startValue + t * endValue
     return (1.0 - t) * Colour(1.0, 1.0, 1.0) + t * Colour(0.5, 0.7, 1.0);
-}
-
-double hitSphere(Point3 const& centre, double const radius, Ray const& ray)
-{
-    Vec3 oc = ray.getOrigin() - centre;
-    
-    double const a = ray.getDirection().lengthSquared();
-    double const b = dot(oc, ray.getDirection());
-    double const c = oc.lengthSquared() - (radius * radius);
-    double const discriminant = (b * b) - (4 * a * c);
-    
-    if (discriminant < 0) {
-        return -1.0;
-    }
-    else {
-        // Return the value of t which satisfies the ray-sphere equation (R(t) - C)^2 = radius^2
-        return (-b - std::sqrt(discriminant)) / a;
-    }
 }
