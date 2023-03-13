@@ -11,7 +11,7 @@ bool Sphere::hit(Ray const& ray, double tMin, double tMax, HitRecord& record) co
     auto b = dot(oc, ray.getDirection());
     auto c = oc.lengthSquared() - (m_radius * m_radius);
 
-    auto discriminant = (b * b) - (4 * a * c);
+    auto discriminant = (b * b) - (a * c);
 
     if (discriminant < 0) {
         return false;
