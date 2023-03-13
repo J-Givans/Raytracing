@@ -12,7 +12,7 @@ void HittableList::clear()
 
 void HittableList::add(std::shared_ptr<Hittable> object)
 {
-    m_objects.emplace_back(object);
+    m_objects.push_back(object);
 }
 
 bool HittableList::hit(Ray const& ray, double tMin, double tMax, HitRecord& record) const noexcept
