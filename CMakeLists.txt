@@ -22,6 +22,7 @@ target_sources("${CMAKE_PROJECT_NAME}"
         main.cpp
     PRIVATE
         ${PROJECT_SOURCE_DIR}/Common.hpp
+        ${PROJECT_SOURCE_DIR}/Vec3.cpp
         ${PROJECT_SOURCE_DIR}/Colour.hpp
         ${PROJECT_SOURCE_DIR}/Colour.cpp
         ${PROJECT_SOURCE_DIR}/Hittable.hpp
