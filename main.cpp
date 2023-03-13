@@ -1,14 +1,14 @@
+#include "Common.hpp"
 #include "Colour.hpp"
-#include "Vec3.hpp"
-#include "Ray.hpp"
+#include "HittableList.hpp"
+#include "Sphere.hpp"
 
-#include <cmath>
 #include <iostream>
 
 /// \brief Linearly blend white and blue colours
 /// \param[in] ray The ray whose colour at a point is to be computed
 /// \returns A blended colour of white and blue
-constexpr Colour rayColour(Ray const& ray) noexcept;
+Colour rayColour(Ray const& ray, Hittable const& world) noexcept;
 
 /// \brief Get the point at which a ray hits a sphere
 /// \param[in] centre The centre of the sphere
@@ -23,6 +23,11 @@ int main()
     static constexpr double aspectRatio {16.0 / 9.0};
     static constexpr int imgWidth {400};
     static constexpr auto imgHeight = static_cast<int>(imgWidth / aspectRatio);
+
+    // World
+    HittableList world;
+    world.add(std::make_shared<Sphere>(Point3(0, 0, -1), 0.5));
+    world.add(std::make_shared<Sphere>(Point3(0, -100.5, -1), 100));
 
     // Camera
     // The viewport is the region of space that can potentially be imaged onto the film
@@ -53,10 +58,10 @@ int main()
             auto v = static_cast<double>(j) / (imgHeight - 1);
 
             // We traverse the viewport from the upper-left corner, and create a ray at each position
-            Ray ray(origin, lowerLeftCorner + (u * horizontal) + (v * vertical) - origin);
+            Ray ray(origin, lowerLeftCorner + (u * horizontal) + (v * vertical));
             
             // Determine the colour of the ray just created
-            Colour pxColour = rayColour(ray);
+            Colour pxColour = rayColour(ray, world);
             
             // Write this colour to stdout
             writeColour(std::cout, pxColour);
@@ -67,17 +72,14 @@ int main()
     return EXIT_SUCCESS;
 }
 
-constexpr Colour rayColour(Ray const& ray) noexcept
+Colour rayColour(Ray const& ray, Hittable const& world) noexcept
 {
-    double t = hitSphere(Point3(0, 0, -1), 0.5, ray);
-
-    if (t > 0.0) {
-        Vec3 normal = unitVector(ray.at(t) - Vec3(0, 0, -1));
-        return 0.5 * Colour(normal.x() + 1, normal.y() + 1, normal.z() + 1);
+    if (HitRecord record; world.hit(ray, 0, infinity, record)) {
+        return 0.5 * (record.normal + Colour(1, 1, 1));
     }
 
     Vec3 unitDirection = unitVector(ray.getDirection());    // scale the ray direction to unit length
-    t = 0.5 * (unitDirection.y() + 1.0);
+    auto const t = 0.5 * (unitDirection.y() + 1.0);
     
     // Linearly blend white and blue depending on the height of the y coordinate
     // blendedValue = (1 - t) * startValue + t * endValue
