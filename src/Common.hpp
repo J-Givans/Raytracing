@@ -27,6 +27,15 @@ inline double randomDouble()
     return distribution(generator);
 }
 
+/// \brief Generate a random real number between [min, max)
+/// \param[in] min The lower bound in the range of possible outputs
+/// \param[in] max The upper bound in the range of possible outputs
+/// \returns A random real number between [min, max)
+inline double randomDouble(double const min, double const max)
+{
+    return min + (max - min) * randomDouble();
+}
+
 /// \brief Clamps a value between a pair of boundary value
 /// \param[in] x The input value to be clamped
 /// \param[in] min The lower bound
