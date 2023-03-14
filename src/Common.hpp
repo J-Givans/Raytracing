@@ -17,7 +17,7 @@ constexpr double degreesToRadians(double const degrees) noexcept
 }
 
 /// \brief Generate a random number between [0.0, 1.0)
-/// \returns A random number of type double
+/// \returns A random real number between [0, 1)
 inline double randomDouble()
 {
     static std::random_device rd;
