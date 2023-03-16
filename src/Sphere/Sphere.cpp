@@ -1,4 +1,4 @@
-#include "Sphere.hpp"
+#include "Sphere/Sphere.hpp"
 
 Sphere::Sphere(Point3 center, double radius) noexcept : m_center(center), m_radius(radius)
 {

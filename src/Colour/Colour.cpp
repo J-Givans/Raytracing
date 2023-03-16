@@ -1,5 +1,5 @@
-#include "Colour.hpp"
-#include "Common.hpp"
+#include "Colour/Colour.hpp"
+#include "Common/Common.hpp"
 
 void writeColour(std::ostream& out, Colour const& pixelColour, int const samplesPerPixel)
 {
