@@ -1,8 +1,8 @@
 #ifndef HITTABLE_HPP
 #define HITTABLE_HPP
 
-#include "Ray.hpp"
-#include "Vec3.hpp"
+#include "Ray/Ray.hpp"
+#include "Vec3/Vec3.hpp"
 
 struct HitRecord
 {

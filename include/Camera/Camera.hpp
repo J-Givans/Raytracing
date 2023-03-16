@@ -1,8 +1,8 @@
 #ifndef CAMERA_HPP
 #define CAMERA_HPP
 
-#include "Common.hpp"
-#include "Vec3.hpp"
+#include "Common/Common.hpp"
+#include "Vec3/Vec3.hpp"
 
 class Camera
 {

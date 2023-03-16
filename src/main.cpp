@@ -1,8 +1,8 @@
-#include "Common.hpp"
-#include "Colour.hpp"
-#include "HittableList.hpp"
-#include "Sphere.hpp"
-#include "Camera.hpp"
+#include "Common/Common.hpp"
+#include "Colour/Colour.hpp"
+#include "HittableList/HittableList.hpp"
+#include "Sphere/Sphere.hpp"
+#include "Camera/Camera.hpp"
 
 #include <iostream>
 

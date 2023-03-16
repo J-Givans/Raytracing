@@ -1,4 +1,4 @@
-#include "HittableList.hpp"
+#include "HittableList/HittableList.hpp"
 
 HittableList::HittableList(std::shared_ptr<Hittable> object) : HittableList()
 {

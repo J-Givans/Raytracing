@@ -1,8 +1,8 @@
 #ifndef SPHERE_HPP
 #define SPHERE_HPP
 
-#include "Hittable.hpp"
-#include "Vec3.hpp"
+#include "Hittable/Hittable.hpp"
+#include "Vec3/Vec3.hpp"
 
 class Sphere : public Hittable
 {

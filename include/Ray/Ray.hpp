@@ -1,7 +1,7 @@
 #ifndef RAY_HPP
 #define RAY_HPP
 
-#include "Vec3.hpp"
+#include "Vec3/Vec3.hpp"
 
 /// \brief 3d point
 using Point3 = Vec3;
