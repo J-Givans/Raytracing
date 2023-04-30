@@ -5,11 +5,12 @@
 #include <gmock/gmock.h>
 
 using namespace ::testing;
+using rt::Vec3;
 
 class Vec3Test : public Test
 {
 public:
-    rt::Vec3 vec_;
+    Vec3 vec_;
 };
 
 TEST_F(Vec3Test, IsAllZerosWhenCreated)
@@ -21,7 +22,7 @@ TEST_F(Vec3Test, IsAllZerosWhenCreated)
 
 TEST_F(Vec3Test, AssigningValuesInConstructorIsSuccessful)
 {
-    auto const vec = rt::Vec3({ 0, 0, 0 });
+    auto const vec = Vec3({ 0, 0, 0 });
     
     ASSERT_FLOAT_EQ(vec_[0], vec[0]);
     ASSERT_FLOAT_EQ(vec_[1], vec[1]);
@@ -57,7 +58,7 @@ TEST_F(Vec3Test, VectorNegationResultsInANewVectorWithComponentWiseNegatedElemen
     ASSERT_FLOAT_EQ(vec[1], -vec_[1]);
     ASSERT_FLOAT_EQ(vec[2], -vec_[2]);
 
-    constexpr rt::Vec3 vec2(4, 5, 6);
+    constexpr Vec3 vec2(4, 5, 6);
     auto const v2 = -vec2;
 
     ASSERT_FLOAT_EQ(v2[0], -vec2[0]);
@@ -67,7 +68,7 @@ TEST_F(Vec3Test, VectorNegationResultsInANewVectorWithComponentWiseNegatedElemen
 
 TEST_F(Vec3Test, UnaryVectorAdditionAddsElementsComponentWise)
 {
-    auto const v = rt::Vec3(1, 2, 3);
+    auto const v = Vec3(1, 2, 3);
     auto const result = vec_ + v;
 
     ASSERT_FLOAT_EQ(result[0], vec_[0] + v[0]);
