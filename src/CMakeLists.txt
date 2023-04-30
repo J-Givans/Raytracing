@@ -1,15 +1,16 @@
 target_sources(${CMAKE_PROJECT_NAME}
+target_include_directories(raytracer PUBLIC "${PROJECT_SOURCE_DIR}/include")
     PUBLIC
         main.cpp
     PRIVATE
-        Common.hpp
+        "${PROJECT_SOURCE_DIR}/include/Common.hpp"
         Vec3.cpp
-        Colour.hpp
+        "${PROJECT_SOURCE_DIR}/include/Colour.hpp"
         Colour.cpp
-        Hittable.hpp
-        HittableList.hpp
+        "${PROJECT_SOURCE_DIR}/include/Hittable.hpp"
+        "${PROJECT_SOURCE_DIR}/include/HittableList.hpp"
         HittableList.cpp
-        Sphere.hpp
+        "${PROJECT_SOURCE_DIR}/include/Sphere.hpp"
         Sphere.cpp
 )
 
