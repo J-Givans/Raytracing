@@ -6,6 +6,8 @@
 
 #include <iostream>
 
+using namespace rt;
+
 /// \brief Linearly blend white and blue colours
 /// \param[in] ray The ray whose colour at a point is to be computed
 /// \returns A blended colour of white and blue

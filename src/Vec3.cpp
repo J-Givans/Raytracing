@@ -1,6 +1,9 @@
 #include "Vec3.hpp"
 
-Vec3 unitVector(Vec3 const& v) noexcept
+namespace rt
 {
-    return v / v.length();
+    Vec3 unitVector(Vec3 const& v) noexcept
+    {
+        return v / v.length();
+    }
 }
