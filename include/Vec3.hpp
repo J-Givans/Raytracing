@@ -37,7 +37,7 @@ namespace rt
 
         /// \brief Negate this vector.
         /// \returns A new vector with x, y, and z-coordinates of opposite polarity
-        constexpr Vec3 operator-() const& noexcept 
+        [[nodiscard]] constexpr Vec3 operator-() const& noexcept 
         { 
             return Vec3(-m_vec[0], -m_vec[1], -m_vec[2]); 
         }
