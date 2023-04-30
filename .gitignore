@@ -9,3 +9,6 @@ build
 
 # Do not track the images.ppm file output
 images.ppm
+
+# Ignore the cache file
+CMakeCache.txt
