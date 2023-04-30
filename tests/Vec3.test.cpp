@@ -1,6 +1,17 @@
-#include <cstdlib>
+#include "Vec3.hpp"
 
-int main() noexcept
+#include <gtest/gtest.h>
+#include <gmock/gmock.h>
+
+class Vec3Test : public ::testing::Test
 {
-    return EXIT_SUCCESS;
+public:
+    rt::Vec3 vec_;
+};
+
+TEST_F(Vec3Test, IsAllZerosWhenCreated)
+{
+    for (int i = 0; i < 3; ++i) {
+        ASSERT_TRUE(vec_[i] == 0);
+    }
 }
