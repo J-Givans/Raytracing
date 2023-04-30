@@ -28,19 +28,22 @@ namespace rt
 
         /// \brief Get the x-coordinate of the vector
         [[nodiscard]] constexpr double x() const& noexcept 
-        { 
+        {
+            Ensures(m_vec[0] >= std::numeric_limits<double>::lowest() and m_vec[0] <= std::numeric_limits<double>::max()); 
             return m_vec[0]; 
         }
 
         /// \brief Get the y-coordinate of the vector
         [[nodiscard]] constexpr double y() const& noexcept 
         { 
+            Ensures(m_vec[1] >= std::numeric_limits<double>::lowest() and m_vec[1] <= std::numeric_limits<double>::max()); 
             return m_vec[1]; 
         }
 
         /// \brief Get the z-coordinate of the vector
         [[nodiscard]] constexpr double z() const& noexcept 
         { 
+            Ensures(m_vec[2] >= std::numeric_limits<double>::lowest() and m_vec[2] <= std::numeric_limits<double>::max()); 
             return m_vec[2]; 
         }
 
