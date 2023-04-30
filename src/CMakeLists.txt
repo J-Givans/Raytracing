@@ -1,4 +1,10 @@
-target_sources(${CMAKE_PROJECT_NAME}
+find_package(Microsoft.GSL REQUIRED)
+
+target_link_libraries(raytracer
+    PRIVATE
+        Microsoft.GSL::GSL
+)
+
 target_include_directories(raytracer PUBLIC "${PROJECT_SOURCE_DIR}/include")
 
 target_sources(raytracer
@@ -17,11 +23,6 @@ target_sources(raytracer
 )
 
 target_compile_options(raytracer
-    PRIVATE
-        Microsoft.GSL::GSL
-        gtest::gtest
-)
-
     PUBLIC
         -Wall -Werror -Wextra -Wundef
 )
