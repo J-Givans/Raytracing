@@ -3,7 +3,9 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 
-class Vec3Test : public ::testing::Test
+using namespace ::testing;
+
+class Vec3Test : public Test
 {
 public:
     rt::Vec3 vec_;
