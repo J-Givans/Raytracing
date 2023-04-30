@@ -85,7 +85,7 @@ namespace rt
         /// \brief Perform component-wise vector addition
         /// \param[in] v The vector to be added to this vector
         /// \returns This vector with the results of the vector addition as its components
-        [[nodiscard]] constexpr Vec3& operator+=(Vec3 const& v) & noexcept
+        constexpr Vec3& operator+=(Vec3 const& v) & noexcept
         {
             m_vec[0] += v[0];
             m_vec[1] += v[1];
@@ -101,7 +101,7 @@ namespace rt
         /// \brief Scale this vector by a factor of t
         /// \param[in] t The scalar with which the vector is multiplied
         /// \returns This vector scaled by a factor of t
-        [[nodiscard]] constexpr Vec3& operator*=(double const t) & noexcept
+        constexpr Vec3& operator*=(double const t) & noexcept
         {
             for (auto& elem : m_vec) {
                 elem *= t;
