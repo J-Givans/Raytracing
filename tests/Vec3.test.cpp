@@ -64,3 +64,13 @@ TEST_F(Vec3Test, VectorNegationResultsInANewVectorWithComponentWiseNegatedElemen
     ASSERT_FLOAT_EQ(v2[1], -vec2[1]);
     ASSERT_FLOAT_EQ(v2[2], -vec2[2]);
 }
+
+TEST_F(Vec3Test, UnaryVectorAdditionAddsElementsComponentWise)
+{
+    auto const v = rt::Vec3(1, 2, 3);
+    auto const result = vec_ + v;
+
+    ASSERT_FLOAT_EQ(result[0], vec_[0] + v[0]);
+    ASSERT_FLOAT_EQ(result[1], vec_[1] + v[1]);
+    ASSERT_FLOAT_EQ(result[2], vec_[2] + v[2]);
+}
