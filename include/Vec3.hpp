@@ -37,7 +37,10 @@ namespace rt
 
         /// \brief Negate this vector.
         /// \returns A new vector with x, y, and z-coordinates of opposite polarity
-        constexpr Vec3 operator-() const& noexcept { return Vec3(-m_vec[0], -m_vec[1], -m_vec[2]); }
+        constexpr Vec3 operator-() const& noexcept 
+        { 
+            return Vec3(-m_vec[0], -m_vec[1], -m_vec[2]); 
+        }
 
         /// \brief Get the vector coordinate at index i
         /// \param[in] i An index into the vector
