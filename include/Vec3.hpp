@@ -38,8 +38,14 @@ namespace rt
         /// \brief Negate this vector.
         /// \returns A new vector with x, y, and z-coordinates of opposite polarity
         [[nodiscard]] constexpr Vec3 operator-() const& noexcept 
-        { 
-            return Vec3(-m_vec[0], -m_vec[1], -m_vec[2]); 
+        {
+            auto const v = Vec3(-m_vec[0], -m_vec[1], -m_vec[2]);
+
+            Ensures(v[0] >= std::numeric_limits<double>::lowest() and v[0] <= std::numeric_limits<double>::max());
+            Ensures(v[1] >= std::numeric_limits<double>::lowest() and v[1] <= std::numeric_limits<double>::max());
+            Ensures(v[2] >= std::numeric_limits<double>::lowest() and v[2] <= std::numeric_limits<double>::max());
+
+            return v;
         }
 
         /// \brief Get the vector coordinate at index i
