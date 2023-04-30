@@ -40,3 +40,11 @@ TEST_F(Vec3Test, IndexingPastLegalBoundsTerminatesTheProgram)
     ASSERT_DEATH(vec_[4], "");
 }
 
+TEST_F(Vec3Test, AssigningValuesInConstructorIsSuccessful)
+{
+    auto const vec = rt::Vec3({ 0, 0, 0 });
+    
+    ASSERT_FLOAT_EQ(vec_[0], vec[0]);
+    ASSERT_FLOAT_EQ(vec_[1], vec[1]);
+    ASSERT_FLOAT_EQ(vec_[2], vec[2]);
+}
