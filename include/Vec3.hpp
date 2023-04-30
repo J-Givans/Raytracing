@@ -91,9 +91,9 @@ namespace rt
             m_vec[1] += v[1];
             m_vec[2] += v[2];
 
-            Ensures(v[0] >= std::numeric_limits<double>::lowest() and v[0] <= std::numeric_limits<double>::max());
-            Ensures(v[1] >= std::numeric_limits<double>::lowest() and v[1] <= std::numeric_limits<double>::max());
-            Ensures(v[2] >= std::numeric_limits<double>::lowest() and v[2] <= std::numeric_limits<double>::max());
+            Ensures(m_vec[0] >= std::numeric_limits<double>::lowest() and m_vec[0] <= std::numeric_limits<double>::max());
+            Ensures(m_vec[1] >= std::numeric_limits<double>::lowest() and m_vec[1] <= std::numeric_limits<double>::max());
+            Ensures(m_vec[2] >= std::numeric_limits<double>::lowest() and m_vec[2] <= std::numeric_limits<double>::max());
 
             return *this;
         }
