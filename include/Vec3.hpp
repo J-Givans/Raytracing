@@ -101,7 +101,7 @@ namespace rt
         /// \brief Scale this vector by a factor of t
         /// \param[in] t The scalar with which the vector is multiplied
         /// \returns This vector scaled by a factor of t
-        constexpr Vec3& operator*=(double const t) & noexcept
+        [[nodiscard]] constexpr Vec3& operator*=(double const t) & noexcept
         {
             for (auto& elem : m_vec) {
                 elem *= t;
