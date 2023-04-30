@@ -3,9 +3,10 @@
 
 #include <array>
 #include <cmath>
+#include <ostream>
 
 #include <gsl/assert>
-#include <ostream>
+#include <gsl/util>
 
 namespace rt
 {
@@ -40,7 +41,7 @@ namespace rt
         /// \brief Get the vector coordinate at index i
         /// \param[in] i An index into the vector
         /// \returns A copy of the coordinate at index i
-        constexpr double operator[](std::size_t const i) const& noexcept 
+        constexpr double operator[](gsl::index i) const& noexcept 
         {
             Expects(i >= 0 and i <= 2);
             return m_vec[i];
@@ -49,7 +50,7 @@ namespace rt
         /// \brief Get the vector coordinate at index i
         /// \param[in] i An index into the vector
         /// \returns A reference to the coordinate at index i
-        constexpr double& operator[](std::size_t const i) & noexcept
+        constexpr double& operator[](gsl::index i) & noexcept
         {
             Expects(i >= 0 and i <= 2);
             return m_vec[i];
