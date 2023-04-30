@@ -48,3 +48,19 @@ TEST_F(Vec3Test, AssigningValuesInConstructorIsSuccessful)
     ASSERT_FLOAT_EQ(vec_[1], vec[1]);
     ASSERT_FLOAT_EQ(vec_[2], vec[2]);
 }
+
+TEST_F(Vec3Test, VectorNegationResultsInANewVectorWithComponentWiseNegatedElements)
+{
+    auto const vec = -vec_;
+    
+    ASSERT_FLOAT_EQ(vec[0], -vec_[0]);
+    ASSERT_FLOAT_EQ(vec[1], -vec_[1]);
+    ASSERT_FLOAT_EQ(vec[2], -vec_[2]);
+
+    constexpr rt::Vec3 vec2(4, 5, 6);
+    auto const v2 = -vec2;
+
+    ASSERT_FLOAT_EQ(v2[0], -vec2[0]);
+    ASSERT_FLOAT_EQ(v2[1], -vec2[1]);
+    ASSERT_FLOAT_EQ(v2[2], -vec2[2]);
+}
