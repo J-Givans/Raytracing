@@ -13,7 +13,6 @@ if (CCACHE)
 endif()
 
 add_executable(raytracer)
-find_package(GTest REQUIRED gtest_main gmock_main)
-
 
 add_subdirectory(src)
+add_subdirectory(tests)
