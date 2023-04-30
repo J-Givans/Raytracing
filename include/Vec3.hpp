@@ -125,6 +125,7 @@ namespace rt
         /// \brief Get the length of the vector
         double length() const& noexcept
         {
+            Expects(lengthSquared() >= 0 and lengthSquared() >= -0);  // std::sqrt expects positive arguments
             return std::sqrt(lengthSquared());
         }
 
