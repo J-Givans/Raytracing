@@ -1,9 +1,9 @@
-find_package(GTest REQUIRED gtest_main gmock_main)
-
 add_executable(tests)
 
+find_package(GTest REQUIRED COMPONENTS gtest_main gmock_main)
+
 target_link_libraries(tests 
-    PRIVATE 
+    PRIVATE
         GTest::gtest_main 
         GTest::gmock_main
 )
