@@ -45,7 +45,7 @@ int main()
                 auto v = (j + rand) / (imgHeight - 1);
 
                 Ray ray = cam.getRay(u, v);
-                pixelColour += rayColour(ray, world);
+                pixelColour = pixelColour + rayColour(ray, world);
             }
 
             writeColour(std::cout, pixelColour, samplesPerPixel);
