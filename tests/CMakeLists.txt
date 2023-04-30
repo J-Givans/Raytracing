@@ -13,4 +13,10 @@ target_include_directories(tests PUBLIC "${PROJECT_SOURCE_DIR}/include")
 target_sources(tests
     PUBLIC
         Vec3.test.cpp
+    PRIVATE
+        "${PROJECT_SOURCE_DIR}/include/Vec3.hpp"
 )
+
+target_compile_features(tests PRIVATE cxx_std_17)
+
+target_compile_options(tests PRIVATE -Wall -Wextra -Werror)
