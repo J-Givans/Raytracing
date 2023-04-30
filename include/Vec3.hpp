@@ -4,6 +4,7 @@
 #include <array>
 #include <cmath>
 #include <ostream>
+#include <limits>
 
 #include <gsl/assert>
 #include <gsl/util>
@@ -44,6 +45,8 @@ namespace rt
         constexpr double operator[](gsl::index i) const& noexcept 
         {
             Expects(i >= 0 and i <= 2);
+            Ensures(m_vec[i] >= std::numeric_limits<double>::lowest() and m_vec[i] <= std::numeric_limits<double>::max());
+            
             return m_vec[i];
         }
 
@@ -53,6 +56,8 @@ namespace rt
         constexpr double& operator[](gsl::index i) & noexcept
         {
             Expects(i >= 0 and i <= 2);
+            Ensures(m_vec[i] >= std::numeric_limits<double>::lowest() and m_vec[i] <= std::numeric_limits<double>::max());
+            
             return m_vec[i];
         }
 
