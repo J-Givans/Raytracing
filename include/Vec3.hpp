@@ -42,7 +42,7 @@ namespace rt
         /// \brief Get the vector coordinate at index i
         /// \param[in] i An index into the vector
         /// \returns A copy of the coordinate at index i
-        constexpr double operator[](gsl::index i) const& noexcept 
+        [[nodiscard]] constexpr double operator[](gsl::index i) const& noexcept 
         {
             Expects(i >= 0 and i <= 2);
             Ensures(m_vec[i] >= std::numeric_limits<double>::lowest() and m_vec[i] <= std::numeric_limits<double>::max());
@@ -53,7 +53,7 @@ namespace rt
         /// \brief Get the vector coordinate at index i
         /// \param[in] i An index into the vector
         /// \returns A reference to the coordinate at index i
-        constexpr double& operator[](gsl::index i) & noexcept
+        [[nodiscard]] constexpr double& operator[](gsl::index i) & noexcept
         {
             Expects(i >= 0 and i <= 2);
             Ensures(m_vec[i] >= std::numeric_limits<double>::lowest() and m_vec[i] <= std::numeric_limits<double>::max());

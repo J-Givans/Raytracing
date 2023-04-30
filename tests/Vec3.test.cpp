@@ -36,8 +36,8 @@ TEST_F(Vec3Test, MethodZReturnsLastValue)
 
 TEST_F(Vec3Test, IndexingPastLegalBoundsTerminatesTheProgram)
 {
-    ASSERT_DEATH(vec_[-1], "");
-    ASSERT_DEATH(vec_[4], "");
+    ASSERT_DEATH([[maybe_unused]] auto const val = vec_[-1], "");
+    ASSERT_DEATH([[maybe_unused]] auto const val = vec_[4], "");
 }
 
 TEST_F(Vec3Test, AssigningValuesInConstructorIsSuccessful)
