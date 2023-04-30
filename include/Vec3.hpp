@@ -27,13 +27,22 @@ namespace rt
         }
 
         /// \brief Get the x-coordinate of the vector
-        [[nodiscard]] constexpr double x() const& noexcept { return m_vec[0]; }
+        [[nodiscard]] constexpr double x() const& noexcept 
+        { 
+            return m_vec[0]; 
+        }
 
         /// \brief Get the y-coordinate of the vector
-        [[nodiscard]] constexpr double y() const& noexcept { return m_vec[1]; }
+        [[nodiscard]] constexpr double y() const& noexcept 
+        { 
+            return m_vec[1]; 
+        }
 
         /// \brief Get the z-coordinate of the vector
-        [[nodiscard]] constexpr double z() const& noexcept { return m_vec[2]; }
+        [[nodiscard]] constexpr double z() const& noexcept 
+        { 
+            return m_vec[2]; 
+        }
 
         /// \brief Negate this vector.
         /// \returns A new vector with x, y, and z-coordinates of opposite polarity
