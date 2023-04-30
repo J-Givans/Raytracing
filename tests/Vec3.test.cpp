@@ -75,3 +75,25 @@ TEST_F(Vec3Test, UnaryVectorAdditionAddsElementsComponentWise)
     ASSERT_FLOAT_EQ(result[1], vec_[1] + v[1]);
     ASSERT_FLOAT_EQ(result[2], vec_[2] + v[2]);
 }
+
+class VectorTest : public Test
+{
+public:
+    Vec3 vec { 3.14159, 200, 1.143495 };
+};
+
+TEST_F(VectorTest, VectorScalingIsAppliedComponentWise)
+{
+    auto const pre = vec;
+    auto& post = vec *= 5;
+
+    ASSERT_FLOAT_EQ(post[0], pre[0] * 5);
+    ASSERT_FLOAT_EQ(post[1], pre[1] * 5);
+    ASSERT_FLOAT_EQ(post[2], pre[2] * 5);
+
+    post = post / 5;
+
+    ASSERT_FLOAT_EQ(post[0], pre[0]);
+    ASSERT_FLOAT_EQ(post[1], pre[1]);
+    ASSERT_FLOAT_EQ(post[2], pre[2]);
+}
