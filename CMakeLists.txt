@@ -12,9 +12,8 @@ if (CCACHE)
     set(CMAKE_CXX_COMPILER_LAUNCHER "${CCACHE}")
 endif()
 
-find_package(Microsoft.GSL REQUIRED)
+add_executable(raytracer)
 find_package(GTest REQUIRED gtest_main gmock_main)
 
-add_executable(${CMAKE_PROJECT_NAME})
 
 add_subdirectory(src)

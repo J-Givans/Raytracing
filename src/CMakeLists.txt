@@ -1,5 +1,7 @@
 target_sources(${CMAKE_PROJECT_NAME}
 target_include_directories(raytracer PUBLIC "${PROJECT_SOURCE_DIR}/include")
+
+target_sources(raytracer
     PUBLIC
         main.cpp
     PRIVATE
@@ -14,18 +16,17 @@ target_include_directories(raytracer PUBLIC "${PROJECT_SOURCE_DIR}/include")
         Sphere.cpp
 )
 
-target_link_libraries(${CMAKE_PROJECT_NAME}
+target_compile_options(raytracer
     PRIVATE
         Microsoft.GSL::GSL
         gtest::gtest
 )
 
-target_compile_options(${CMAKE_PROJECT_NAME}
     PUBLIC
         -Wall -Werror -Wextra -Wundef
 )
 
-target_compile_features(${CMAKE_PROJECT_NAME}
+target_compile_features(raytracer
     PUBLIC
         cxx_std_17
 )
