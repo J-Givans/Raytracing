@@ -1,5 +1,6 @@
 #include "Vec3.hpp"
 
+#include <gtest/gtest-death-test.h>
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 
@@ -32,3 +33,10 @@ TEST_F(Vec3Test, MethodZReturnsLastValue)
 {
     ASSERT_FLOAT_EQ(vec_.z(), vec_[2]);
 }
+
+TEST_F(Vec3Test, IndexingPastLegalBoundsTerminatesTheProgram)
+{
+    ASSERT_DEATH(vec_[-1], "");
+    ASSERT_DEATH(vec_[4], "");
+}
+
