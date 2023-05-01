@@ -1,9 +1,6 @@
 #ifndef COMMON_HPP
 #define COMMON_HPP
 
-#include "Ray.hpp"
-#include "Vec3.hpp"
-
 #include <cmath>
 #include <limits>
 #include <random>
