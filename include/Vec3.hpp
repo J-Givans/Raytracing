@@ -132,7 +132,11 @@ namespace rt
         /// \brief Get the dot product of the vector with itself
         constexpr double lengthSquared() const& noexcept
         {
-            return (m_vec[0] * m_vec[0]) + (m_vec[1] * m_vec[1]) + (m_vec[2] * m_vec[2]);
+            auto const dotProduct = (m_vec[0] * m_vec[0]) + (m_vec[1] * m_vec[1]) + (m_vec[2] * m_vec[2]);
+            
+            Ensures(dotProduct >= std::numeric_limits<double>::lowest() and dotProduct <= std::numeric_limits<double>::max());
+
+            return dotProduct;
         }
 
     private:
