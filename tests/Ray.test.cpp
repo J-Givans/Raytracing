@@ -36,3 +36,11 @@ TEST(RayTest, IsPositionedAtOriginWithZeroDirectionVectorByDefault)
     ASSERT_TRUE(ray.getOrigin() == Vec3(0, 0, 0));
     ASSERT_TRUE(ray.getDirection() == Vec3(0, 0, 0));
 }
+
+TEST(RayTest, CanSpecifyOriginAndPositionWhenCreated)
+{
+    constexpr auto ray = Ray(Point3(0, 0, 0), Vec3(1, 1, 1));
+
+    ASSERT_TRUE(ray.getOrigin() == Point3(0, 0, 0));
+    ASSERT_TRUE(ray.getDirection() == Vec3(1, 1, 1));
+}
