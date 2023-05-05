@@ -22,7 +22,7 @@ TEST_F(Vec3Test, IsAllZerosWhenCreated)
 
 TEST_F(Vec3Test, AssigningValuesInConstructorIsSuccessful)
 {
-    auto const vec = Vec3({ 0, 0, 0 });
+    auto const vec = Vec3(0, 0, 0);
     
     ASSERT_FLOAT_EQ(vec_[0], vec[0]);
     ASSERT_FLOAT_EQ(vec_[1], vec[1]);
