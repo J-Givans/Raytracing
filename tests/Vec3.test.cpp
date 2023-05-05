@@ -98,8 +98,11 @@ TEST_F(VectorTest, VectorScalingIsAppliedComponentWise)
     ASSERT_FLOAT_EQ(post[2], pre[2]);
 }
 
-TEST(vec3test, MethodLengthComputesTheDotProduct)
+TEST(vec3test, MethodLengthSquaredComputesTheDotProduct)
 {
-    ASSERT_FLOAT_EQ(Vec3(1, 1, 1).lengthSquared(), 3);
-    ASSERT_FLOAT_EQ(Vec3(2, 2, 2).lengthSquared(), 12);
+    Vec3 v1(1, 1, 1);
+    Vec3 v2(2, 2, 2);
+
+    ASSERT_FLOAT_EQ(v1.lengthSquared(), dot(v1, v1));
+    ASSERT_FLOAT_EQ(v2.lengthSquared(), dot(v2, v2));
 }
