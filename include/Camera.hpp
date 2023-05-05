@@ -2,6 +2,7 @@
 #define CAMERA_HPP
 
 #include "Common.hpp"
+#include "Ray.hpp"
 #include "Vec3.hpp"
 
 namespace rt
