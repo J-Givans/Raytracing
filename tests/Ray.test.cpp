@@ -44,3 +44,15 @@ TEST(RayTest, CanSpecifyOriginAndPositionWhenCreated)
     ASSERT_TRUE(ray.getOrigin() == Point3(0, 0, 0));
     ASSERT_TRUE(ray.getDirection() == Vec3(1, 1, 1));
 }
+
+TEST(RayTest, MethodAtGetsAnArbitraryPointOnTheRay)
+{
+    constexpr auto ray = Ray(Point3(0, 0, 0), Vec3(10, 10, 10));
+
+    ASSERT_TRUE(ray.at(0) == ray.getOrigin());
+    ASSERT_TRUE(ray.at(0.1) == Point3(1, 1, 1));
+    ASSERT_TRUE(ray.at(-0.2) == Point3(-2, -2, -2));
+    ASSERT_TRUE(ray.at(0.5) == Point3(5, 5, 5));
+    ASSERT_TRUE(ray.at(-1) == Point3(-10, -10, -10));
+    ASSERT_TRUE(ray.at(50) == Point3(500, 500, 500));
+}
