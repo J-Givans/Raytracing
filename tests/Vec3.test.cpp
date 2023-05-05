@@ -22,7 +22,7 @@ TEST_F(Vec3Test, IsAllZerosWhenCreated)
 
 TEST_F(Vec3Test, AssigningValuesInConstructorIsSuccessful)
 {
-    auto const vec = Vec3({ 0, 0, 0 });
+    auto const vec = Vec3(0, 0, 0);
     
     ASSERT_FLOAT_EQ(vec_[0], vec[0]);
     ASSERT_FLOAT_EQ(vec_[1], vec[1]);
@@ -96,4 +96,13 @@ TEST_F(VectorTest, VectorScalingIsAppliedComponentWise)
     ASSERT_FLOAT_EQ(post[0], pre[0]);
     ASSERT_FLOAT_EQ(post[1], pre[1]);
     ASSERT_FLOAT_EQ(post[2], pre[2]);
+}
+
+TEST(vec3test, MethodLengthSquaredComputesTheDotProduct)
+{
+    Vec3 v1(1, 1, 1);
+    Vec3 v2(2, 2, 2);
+
+    ASSERT_FLOAT_EQ(v1.lengthSquared(), dot(v1, v1));
+    ASSERT_FLOAT_EQ(v2.lengthSquared(), dot(v2, v2));
 }
