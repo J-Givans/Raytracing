@@ -30,7 +30,7 @@ namespace rt
         /// \returns The direction towards which the ray is travelling
         constexpr Vec3 getDirection() const& noexcept { return m_direction; }
 
-        /// \brief Get the point at distance @param t units from the origin
+        /// \brief Get the point at distance @param t units from the ray's origin
         /// \param[in] t The distance from the origin. 
         ///     Positive values of t give points in front of the origin.
         ///     Negative values give points behind the origin
