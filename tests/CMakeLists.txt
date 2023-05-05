@@ -14,9 +14,11 @@ target_sources(tests
     PUBLIC
         Vec3.test.cpp
         Camera.test.cpp
+        Ray.test.cpp
     PRIVATE
         "${PROJECT_SOURCE_DIR}/include/Vec3.hpp"
         "${PROJECT_SOURCE_DIR}/include/Camera.hpp"
+        "${PROJECT_SOURCE_DIR}/include/Ray.hpp"
 )
 
 target_compile_features(tests PRIVATE cxx_std_17)
