@@ -106,3 +106,18 @@ TEST(vec3test, MethodLengthSquaredComputesTheDotProduct)
     ASSERT_FLOAT_EQ(v1.lengthSquared(), dot(v1, v1));
     ASSERT_FLOAT_EQ(v2.lengthSquared(), dot(v2, v2));
 }
+
+TEST(vec3Test, StaticMethodsCreateVectorsWithRandomCoordinates)
+{
+    auto v = Vec3::random();
+
+    ASSERT_THAT(v.x() >= 0 and v.x() < 1, Eq(true));
+    ASSERT_THAT(v.y() >= 0 and v.y() < 1, Eq(true));
+    ASSERT_THAT(v.z() >= 0 and v.z() < 1, Eq(true));
+
+    v = Vec3::random(2, 5);
+
+    ASSERT_THAT(v.x() >= 2 and v.x() < 5, Eq(true));
+    ASSERT_THAT(v.y() >= 2 and v.y() < 5, Eq(true));
+    ASSERT_THAT(v.z() >= 2 and v.z() < 5, Eq(true));
+}

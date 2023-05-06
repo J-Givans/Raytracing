@@ -9,6 +9,8 @@
 #include <gsl/assert>
 #include <gsl/util>
 
+#include "Common.hpp"
+
 namespace rt
 {
     class Vec3
@@ -138,6 +140,14 @@ namespace rt
             return dotProduct;
         }
 
+        /// \brief Create a new vector with randomly generated coordinates
+        /// \returns A new vector with randomly-generated coordinates
+        static Vec3 random();
+
+        /// \brief Create a new vector with randomly-generated coordinates 
+        /// \returns A new vector with randomly-generated coordinates
+        static Vec3 random(double min, double max);
+
     private:
         std::array<double, 3> m_vec {0, 0, 0};
     };
@@ -215,6 +225,32 @@ namespace rt
     /// \param[in] v The vector whose unit vector is to be computed
     /// \returns The unit vector of @param[in] v
     extern Vec3 unitVector(Vec3 const& v) noexcept;
+
+    inline Vec3 Vec3::random()
+    {
+        auto const x = randomDouble();
+        auto const y = randomDouble();
+        auto const z = randomDouble();
+
+        Expects(x >= 0.0 and x < 1.0);
+        Expects(y >= 0.0 and y < 1.0);
+        Expects(z >= 0.0 and z < 1.0);
+
+        return Vec3(x, y, z);
+    }
+
+    inline Vec3 Vec3::random(double min, double max)
+    {
+        auto const x = randomDouble(min, max);
+        auto const y = randomDouble(min, max);
+        auto const z = randomDouble(min, max);
+
+        Expects(x >= min and x < max);
+        Expects(y >= min and y < max);
+        Expects(z >= min and z < max);
+
+        return Vec3(x, y, z);
+    }
 }
 
 #endif
