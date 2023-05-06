@@ -32,7 +32,7 @@ namespace rt
     /// \returns A random real number between [min, max)
     inline double randomDouble(double const min, double const max)
     {
-        return min + (max - min) * randomDouble();
+        return std::fma(max - min, randomDouble(), min);
     }
 
     /// \brief Clamps a value between a pair of boundary value
