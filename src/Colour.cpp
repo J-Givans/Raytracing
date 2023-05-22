@@ -5,12 +5,16 @@ namespace rt
 {
     void writeColour(std::ostream& out, Colour const& pixelColour, int const samplesPerPixel)
     {
-        // Divide the colour by the number of pixels
+        auto r = pixelColour.x();
+        auto g = pixelColour.y();
+        auto b = pixelColour.z();
+
+        // Divide the colour by the number of samples and gamma-correct for gamma = 2.0
         double const scale = 1.0 / samplesPerPixel;
 
-        double const r = pixelColour.x() * scale;
-        double const g = pixelColour.y() * scale;
-        double const b = pixelColour.z() * scale;
+        r = std::sqrt(scale * r);
+        g = std::sqrt(scale * g);
+        b = std::sqrt(scale * b);
 
         // Write the translated [0, 255] value of each colour component
         out << static_cast<int>(255.999 * clamp(r, 0.0, 0.999)) << ' '
