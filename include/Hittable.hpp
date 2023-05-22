@@ -4,12 +4,17 @@
 #include "Ray.hpp"
 #include "Vec3.hpp"
 
+#include <memory>
+
 namespace rt
 {
+    class Material;     // forward declaration to Material class
+
     struct HitRecord
     {
         Point3 point;
         Vec3 normal;
+        std::shared_ptr<Material> materialPtr;
         double t;
         bool frontFace;     // In which direction is the normal pointing towards from the surface?
 
