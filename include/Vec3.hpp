@@ -5,6 +5,7 @@
 #include <cmath>
 #include <ostream>
 #include <limits>
+#include <algorithm>
 
 #include <gsl/assert>
 #include <gsl/util>
@@ -55,10 +56,12 @@ namespace rt
         {
             auto const v = Vec3(-m_vec[0], -m_vec[1], -m_vec[2]);
 
-            Ensures(v[0] >= std::numeric_limits<double>::lowest() and v[0] <= std::numeric_limits<double>::max());
-            Ensures(v[1] >= std::numeric_limits<double>::lowest() and v[1] <= std::numeric_limits<double>::max());
-            Ensures(v[2] >= std::numeric_limits<double>::lowest() and v[2] <= std::numeric_limits<double>::max());
-
+            Ensures(
+                std::all_of(m_vec.cbegin(), m_vec.cend(), [](double d) {
+                    return d >= std::numeric_limits<double>::lowest() and d <= std::numeric_limits<double>::max();
+                })
+            );
+            
             return v;
         }
 
@@ -93,9 +96,11 @@ namespace rt
             m_vec[1] += v[1];
             m_vec[2] += v[2];
 
-            Ensures(m_vec[0] >= std::numeric_limits<double>::lowest() and m_vec[0] <= std::numeric_limits<double>::max());
-            Ensures(m_vec[1] >= std::numeric_limits<double>::lowest() and m_vec[1] <= std::numeric_limits<double>::max());
-            Ensures(m_vec[2] >= std::numeric_limits<double>::lowest() and m_vec[2] <= std::numeric_limits<double>::max());
+            Ensures(
+                std::all_of(m_vec.cbegin(), m_vec.cend(), [](double d) {
+                    return d >= std::numeric_limits<double>::lowest() and d <= std::numeric_limits<double>::max();
+                })
+            );
 
             return *this;
         }
@@ -109,9 +114,11 @@ namespace rt
                 elem *= t;
             }
 
-            Ensures(m_vec[0] >= std::numeric_limits<double>::lowest() and m_vec[0] <= std::numeric_limits<double>::max());
-            Ensures(m_vec[1] >= std::numeric_limits<double>::lowest() and m_vec[1] <= std::numeric_limits<double>::max());
-            Ensures(m_vec[2] >= std::numeric_limits<double>::lowest() and m_vec[2] <= std::numeric_limits<double>::max());
+            Ensures(
+                std::all_of(m_vec.cbegin(), m_vec.cend(), [](double d) {
+                    return d >= std::numeric_limits<double>::lowest() and d <= std::numeric_limits<double>::max();
+                })
+            );
 
             return *this;
         }
@@ -232,9 +239,7 @@ namespace rt
         auto const y = randomDouble();
         auto const z = randomDouble();
 
-        Expects(x >= 0.0 and x < 1.0);
-        Expects(y >= 0.0 and y < 1.0);
-        Expects(z >= 0.0 and z < 1.0);
+        Expects((x >= 0.0 and x < 1.0) and (y >= 0.0 and y < 1.0) and (z >= 0.0 and z < 1.0));
 
         return Vec3(x, y, z);
     }
@@ -245,9 +250,7 @@ namespace rt
         auto const y = randomDouble(min, max);
         auto const z = randomDouble(min, max);
 
-        Expects(x >= min and x < max);
-        Expects(y >= min and y < max);
-        Expects(z >= min and z < max);
+        Expects((x >= min and x < max) and (y >= min and y < max) and (z >= min and z < max));
 
         return Vec3(x, y, z);
     }
