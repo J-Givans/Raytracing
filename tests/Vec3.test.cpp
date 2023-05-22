@@ -16,15 +16,13 @@ TEST(Vec3Test, ContainsZerosByDefault)
     }
 }
 
-TEST(Vec3Test, AssigningValuesInConstructorIsSuccessful)
+TEST(Vec3Test, ContainsValuesPassedToConstructor)
 {
-    Vec3 vec_;
-
-    auto const vec = Vec3(0, 0, 0);
+    auto const vector = Vec3(1.f, 2.f, 3.f);
     
-    ASSERT_FLOAT_EQ(vec_[0], vec[0]);
-    ASSERT_FLOAT_EQ(vec_[1], vec[1]);
-    ASSERT_FLOAT_EQ(vec_[2], vec[2]);
+    ASSERT_FLOAT_EQ(vector[0], 1.f);
+    ASSERT_FLOAT_EQ(vector[1], 2.f);
+    ASSERT_FLOAT_EQ(vector[2], 3.f);
 }
 
 TEST(Vec3Test, MethodXReturnsFirstValue)
