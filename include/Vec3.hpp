@@ -260,6 +260,10 @@ namespace rt
     /// If so, it picks this point and immdiately returns it, otherwise it proceeds to the next loop iteration
     /// \returns A point lying inside a sphere of unit radius
     extern Vec3 randomInUnitSphere();
+
+    /// \brief Pick random points in a unit sphere and then normalise them
+    /// \returns A normalised point vector
+    extern Vec3 randomUnitVector();
 }
 
 #endif

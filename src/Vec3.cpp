@@ -18,4 +18,9 @@ namespace rt
             }
         }
     }
+
+    Vec3 randomUnitVector()
+    {
+        return unitVector(randomInUnitSphere());
+    }
 }

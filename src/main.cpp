@@ -60,15 +60,13 @@ int main()
 
 Colour rayColour(Ray const& ray, Hittable const& world, int recursionDepth) noexcept
 {
-    HitRecord record; 
-
     // If we've exceeded the ray bounce limit, no more light is gathered
     if (recursionDepth <= 0) {
         return Colour(0, 0, 0);
     }
 
-    if (world.hit(ray, 0.001, infinity, record)) {
-        Point3 target = record.point + record.normal + randomInUnitSphere();
+    if (HitRecord record; world.hit(ray, 0.001, infinity, record)) {
+        Point3 target = record.point + record.normal + randomUnitVector();
         return 0.5 * rayColour(Ray(record.point, target - record.point), world, recursionDepth - 1);
     }
 
