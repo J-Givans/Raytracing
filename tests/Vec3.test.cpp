@@ -7,12 +7,12 @@
 using namespace ::testing;
 using rt::Vec3;
 
-TEST(Vec3Test, IsAllZerosWhenCreated)
+TEST(Vec3Test, ContainsZerosByDefault)
 {
-    Vec3 vec_;
+    Vec3 vector;
     
     for (int i = 0; i < 3; ++i) {
-        ASSERT_FLOAT_EQ(vec_[i], 0);
+        ASSERT_FLOAT_EQ(vector[i], 0);
     }
 }
 
