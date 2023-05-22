@@ -126,3 +126,10 @@ TEST(vec3Test, StaticMethodsCreateVectorsWithRandomCoordinates)
     ASSERT_THAT(v.y() >= 2 and v.y() < 5, Eq(true));
     ASSERT_THAT(v.z() >= 2 and v.z() < 5, Eq(true));
 }
+
+TEST(Vec3Test, RandomInUnitSphereTest)
+{
+    auto vector = rt::randomInUnitSphere();
+    
+    ASSERT_THAT(vector.lengthSquared(), Le(1.f));
+}
