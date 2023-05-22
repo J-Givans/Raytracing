@@ -19,6 +19,7 @@ target_sources(tests
         "${PROJECT_SOURCE_DIR}/include/Vec3.hpp"
         "${PROJECT_SOURCE_DIR}/include/Camera.hpp"
         "${PROJECT_SOURCE_DIR}/include/Ray.hpp"
+        "${PROJECT_SOURCE_DIR}/src/Vec3.cpp"
 )
 
 target_compile_features(tests PRIVATE cxx_std_17)
