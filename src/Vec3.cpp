@@ -6,4 +6,16 @@ namespace rt
     {
         return v / v.length();
     }
+
+    Vec3 randomInUnitSphere()
+    {
+        while (true) {
+            if (auto point = Vec3::random(-1, 1); point.lengthSquared() >= 1) {
+                continue;
+            }
+            else {
+                return point;
+            }
+        }
+    }
 }

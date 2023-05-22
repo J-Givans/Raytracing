@@ -254,6 +254,12 @@ namespace rt
 
         return Vec3(x, y, z);
     }
+
+    /// \brief Get a random point in a sphere of unit radius
+    /// \details This function repeatedly computes random points and checks whether they lie inside a sphere of unit radius.
+    /// If so, it picks this point and immdiately returns it, otherwise it proceeds to the next loop iteration
+    /// \returns A point lying inside a sphere of unit radius
+    extern Vec3 randomInUnitSphere();
 }
 
 #endif
