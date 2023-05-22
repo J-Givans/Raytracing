@@ -67,7 +67,7 @@ Colour rayColour(Ray const& ray, Hittable const& world, int recursionDepth) noex
         return Colour(0, 0, 0);
     }
 
-    if (world.hit(ray, 0, infinity, record)) {
+    if (world.hit(ray, 0.001, infinity, record)) {
         Point3 target = record.point + record.normal + randomInUnitSphere();
         return 0.5 * rayColour(Ray(record.point, target - record.point), world, recursionDepth - 1);
     }
