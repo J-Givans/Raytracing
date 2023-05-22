@@ -27,20 +27,23 @@ TEST(Vec3Test, ContainsValuesPassedToConstructor)
 
 TEST(Vec3Test, MethodXReturnsFirstValue)
 {
-    Vec3 vec_;
-    ASSERT_FLOAT_EQ(vec_.x(), vec_[0]);
+    Vec3 vector(3.f, 4.f, 5.f);
+    
+    ASSERT_FLOAT_EQ(vector.x(), vector[0]);
 }
 
 TEST(Vec3Test, MethodYReturnsSecondValue)
 {
-    Vec3 vec_;
-    ASSERT_FLOAT_EQ(vec_.y(), vec_[1]);
+    Vec3 vector(6.f,7.f, 8.f);
+    
+    ASSERT_FLOAT_EQ(vector.y(), vector[1]);
 }
 
 TEST(Vec3Test, MethodZReturnsLastValue)
 {
-    Vec3 vec_;
-    ASSERT_FLOAT_EQ(vec_.z(), vec_[2]);
+    Vec3 vector(9.f, 10.f, 11.f);
+    
+    ASSERT_FLOAT_EQ(vector.z(), vector[2]);
 }
 
 TEST(Vec3Test, IndexingPastLegalBoundsTerminatesTheProgram)
