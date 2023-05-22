@@ -7,21 +7,19 @@
 using namespace ::testing;
 using rt::Vec3;
 
-class Vec3Test : public Test
+TEST(Vec3Test, IsAllZerosWhenCreated)
 {
-public:
     Vec3 vec_;
-};
-
-TEST_F(Vec3Test, IsAllZerosWhenCreated)
-{
+    
     for (int i = 0; i < 3; ++i) {
         ASSERT_FLOAT_EQ(vec_[i], 0);
     }
 }
 
-TEST_F(Vec3Test, AssigningValuesInConstructorIsSuccessful)
+TEST(Vec3Test, AssigningValuesInConstructorIsSuccessful)
 {
+    Vec3 vec_;
+
     auto const vec = Vec3(0, 0, 0);
     
     ASSERT_FLOAT_EQ(vec_[0], vec[0]);
@@ -29,29 +27,34 @@ TEST_F(Vec3Test, AssigningValuesInConstructorIsSuccessful)
     ASSERT_FLOAT_EQ(vec_[2], vec[2]);
 }
 
-TEST_F(Vec3Test, MethodXReturnsFirstValue)
+TEST(Vec3Test, MethodXReturnsFirstValue)
 {
+    Vec3 vec_;
     ASSERT_FLOAT_EQ(vec_.x(), vec_[0]);
 }
 
-TEST_F(Vec3Test, MethodYReturnsSecondValue)
+TEST(Vec3Test, MethodYReturnsSecondValue)
 {
+    Vec3 vec_;
     ASSERT_FLOAT_EQ(vec_.y(), vec_[1]);
 }
 
-TEST_F(Vec3Test, MethodZReturnsLastValue)
+TEST(Vec3Test, MethodZReturnsLastValue)
 {
+    Vec3 vec_;
     ASSERT_FLOAT_EQ(vec_.z(), vec_[2]);
 }
 
-TEST_F(Vec3Test, IndexingPastLegalBoundsTerminatesTheProgram)
+TEST(Vec3Test, IndexingPastLegalBoundsTerminatesTheProgram)
 {
+    Vec3 vec_;
     ASSERT_DEATH([[maybe_unused]] auto const val = vec_[-1], "");
     ASSERT_DEATH([[maybe_unused]] auto const val = vec_[4], "");
 }
 
-TEST_F(Vec3Test, VectorNegationResultsInANewVectorWithComponentWiseNegatedElements)
+TEST(Vec3Test, VectorNegationResultsInANewVectorWithComponentWiseNegatedElements)
 {
+    Vec3 vec_;
     auto const vec = -vec_;
     
     ASSERT_FLOAT_EQ(vec[0], -vec_[0]);
@@ -66,8 +69,9 @@ TEST_F(Vec3Test, VectorNegationResultsInANewVectorWithComponentWiseNegatedElemen
     ASSERT_FLOAT_EQ(v2[2], -vec2[2]);
 }
 
-TEST_F(Vec3Test, UnaryVectorAdditionAddsElementsComponentWise)
+TEST(Vec3Test, UnaryVectorAdditionAddsElementsComponentWise)
 {
+    Vec3 vec_;
     auto const v = Vec3(1, 2, 3);
     auto const result = vec_ + v;
 
