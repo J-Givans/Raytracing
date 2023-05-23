@@ -1,4 +1,5 @@
 #include "Material.hpp"
+#include "Common.hpp"
 #include "Hittable.hpp"
 #include "Vec3.hpp"
 
@@ -68,7 +69,7 @@ namespace rt
 
         Vec3 direction;
 
-        if (cannotRefract) {
+        if (cannotRefract or getReflectance(cosTheta, refractionRatio) > randomDouble()) {
             direction = getReflectedRay(unitDirection, record.normal);
         }
         else {
@@ -78,5 +79,14 @@ namespace rt
         scattered = Ray(record.point, direction);
 
         return true;
+    }
+
+    double Dielectric::getReflectance(double cosine, double refractiveIndex)
+    {
+        // Use Schlick's approximation for reflectance
+        auto r_0 = (1 - refractiveIndex) / (1 + refractiveIndex);
+        r_0 *= r_0;
+        
+        return r_0 + (1 - r_0) * std::pow((1 - cosine), 5);
     }
 }

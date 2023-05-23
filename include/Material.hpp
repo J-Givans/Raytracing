@@ -84,6 +84,12 @@ namespace rt
 
     private:
         double m_refractiveIndex;
+
+        /// \brief Get the reflectance of the dielectric material
+        /// \param[in] cosine The angle at which the incident ray intersects the object
+        /// \param[in] refractiveIndex The refractive index of the object
+        /// \returns The reflectance of the dielectric material
+        static double getReflectance(double cosine, double refractiveIndex);
     };
 }
 
