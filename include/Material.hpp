@@ -53,7 +53,7 @@ namespace rt
     public:
         /// \brief Create a metallic material with the given albedo
         /// \param[in] albedo The attenuation of rays incident to the metallic object
-        explicit Metal(Colour const& albedo) noexcept;
+        explicit Metal(Colour const& albedo, double fuzziness) noexcept;
 
         /// \brief Determine if a scattered ray is produced from the interaction of an incident ray with an object
         /// \param[in] incidentRay The incoming ray to the object
@@ -65,6 +65,7 @@ namespace rt
 
     private:
         Colour m_albedo;
+        double m_fuzziness;
     };
 }
 

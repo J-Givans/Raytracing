@@ -23,14 +23,14 @@ namespace rt
         return true;
     }
 
-    Metal::Metal(Colour const& albedo) noexcept : m_albedo(albedo)
+    Metal::Metal(Colour const& albedo, double fuzziness) noexcept : m_albedo(albedo), m_fuzziness(fuzziness < 1 ? fuzziness : 1)
     {
     }
 
     bool Metal::scatter(Ray const& incidentRay, HitRecord const& record, Colour& attenuation, Ray& scattered) const
     {
         auto reflectedRay = getReflectedRay(unitVector(incidentRay.getDirection()), record.normal);
-        scattered = Ray(record.point, reflectedRay);
+        scattered = Ray(record.point, reflectedRay + m_fuzziness * randomInUnitSphere());
         attenuation = m_albedo;
 
         if (dot(scattered.getDirection(), record.normal) > 0) {
