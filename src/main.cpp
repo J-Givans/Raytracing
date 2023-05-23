@@ -36,7 +36,7 @@ int main()
     world.add(std::make_shared<Sphere>(Point3(1.0, 0.0, -1.0), 0.5, materialRight));
 
     // Camera
-    Camera cam;
+    Camera cam(90, aspectRatio);
 
     // Render
     std::cout << "P3\n" << imgWidth << ' ' << imgHeight << "\n255\n";

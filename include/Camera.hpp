@@ -10,8 +10,10 @@ namespace rt
     class Camera
     {
     public:
-        /// \brief Default constructor
-        constexpr Camera() noexcept;
+        /// \brief Create a camera with the specified field of view and aspect ratio
+        /// \param[in] verticalFovInDegrees The angle you see through the portal
+        /// \param[in] aspectRatio The ratio between the image width and height
+        constexpr Camera(double verticalFovInDegrees, double aspectRatio) noexcept;
 
         /// \brief 
         /// \param[in] u
@@ -27,11 +29,14 @@ namespace rt
     };
 
     // Create a new Camera and define its position relative to the viewport
-    constexpr Camera::Camera() noexcept
+    constexpr Camera::Camera(double verticalFovInDegrees, double aspectRatio) noexcept
     {
-        constexpr double aspectRatio = 16.0 / 9.0;  // ratio of the image width to image height
-        constexpr double viewportHeight = 2.0;  // the height of the viewport (or scene)
-        constexpr double viewportWidth = aspectRatio * viewportHeight; // the width of the viewport (or scene)
+        auto theta = degreesToRadians(verticalFovInDegrees);
+        auto h = std::tan(theta / 2);
+        
+        double const viewportHeight = 2.0 * h;  // the height of the viewport (or scene)
+        double const viewportWidth = aspectRatio * viewportHeight; // the width of the viewport (or scene)
+
         constexpr double focalLength = 1.0; // the distance from the camera to the viewport
 
         m_horizontal = Vec3(viewportWidth, 0.0, 0.0);   // offset vector relative to the viewport width
