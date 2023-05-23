@@ -283,6 +283,22 @@ namespace rt
     {
         return incidentRay - (2 * dot(incidentRay, normal) * normal);
     }
+
+    /// \brief Get the refracted ray given the incident ray, the normal, and the 
+    /// ratio of the refractive indices of the media through which light is travelling
+    /// \param[in] incidentRay The ray of incidence
+    /// \param[in] normal The normal at the point of intersection
+    /// \param[in] etaQuotient The ratio between the refractive index of the medium through which the incident ray
+    /// is travelling and that of the medium through which the refracted ray is travelling
+    /// \returns The refracted ray
+    constexpr Vec3 getRefractedRay(Vec3 const& incidentRay, Vec3 const& normal, double etaQuotient)
+    {
+        auto cosTheta = std::fmin(dot(-incidentRay, normal), 1.0);
+        auto refractedPerpendicular = Vec3(etaQuotient * (incidentRay + (cosTheta * normal)));
+        auto refractedParallel = Vec3(-std::sqrt(std::fabs(1.0 - refractedPerpendicular.lengthSquared())) * normal);
+
+        return refractedPerpendicular + refractedParallel;
+    }
 }
 
 #endif
