@@ -13,6 +13,7 @@ target_sources(raytracer
 
         "${PROJECT_SOURCE_DIR}/include/Common.hpp"
         "${PROJECT_SOURCE_DIR}/include/Colour.hpp"
+        "${PROJECT_SOURCE_DIR}/include/Camera.hpp"
         "${PROJECT_SOURCE_DIR}/include/Hittable.hpp"
         "${PROJECT_SOURCE_DIR}/include/HittableList.hpp"
         "${PROJECT_SOURCE_DIR}/include/Sphere.hpp"
@@ -20,6 +21,7 @@ target_sources(raytracer
     PRIVATE
         Vec3.cpp
         Colour.cpp
+        Camera.cpp
         HittableList.cpp
         Sphere.cpp
         Material.cpp
