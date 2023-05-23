@@ -44,4 +44,16 @@ namespace rt
     Dielectric::Dielectric(double refractiveIndex) : m_refractiveIndex(refractiveIndex)
     {
     }
+
+    bool Dielectric::scatter(Ray const& incidentRay, HitRecord const& record, Colour& attenuation, Ray& scattered) const
+    {
+        attenuation = Colour(1.0, 1.0, 1.0);
+        double refractionRatio = record.frontFace ? (1.0 / m_refractiveIndex) : m_refractiveIndex;
+
+        Vec3 unitDirection = unitVector(incidentRay.getDirection());
+        Vec3 refractedRay = getRefractedRay(unitDirection, record.normal, refractionRatio);
+        scattered = Ray(record.point, refractedRay);
+
+        return true;
+    }
 }

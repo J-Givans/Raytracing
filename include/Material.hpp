@@ -74,6 +74,14 @@ namespace rt
     public:
         explicit Dielectric(double indexOfRefraction);
 
+        /// \brief Determine if a scattered ray is produced from the interaction of an incident ray with an object
+        /// \param[in] incidentRay The incoming ray to the object
+        /// \param[inout] record A description of ray-object intersections
+        /// \param[in] attenuation The degree to which the colour intensity should be reduced
+        /// \param[inout] scattered The reflected ray
+        /// \returns True if a scattered ray was produced, false otherwise
+        bool scatter(Ray const& incidentRay, HitRecord const& record, Colour& attenuation, Ray& scattered) const override;
+
     private:
         double m_refractiveIndex;
     };
