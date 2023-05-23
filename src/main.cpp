@@ -14,7 +14,7 @@ using namespace rt;
 Colour rayColour(Ray const& ray, Hittable const& world, int recursionDepth) noexcept;
 
 int main()
-{
+    {
     // Image
     static constexpr double aspectRatio {16.0 / 9.0};
     static constexpr int imgWidth {400};
@@ -36,7 +36,7 @@ int main()
     world.add(std::make_shared<Sphere>(Point3(1.0, 0.0, -1.0), 0.5, materialRight));
 
     // Camera
-    Camera cam(90, aspectRatio);
+    Camera cam(Point3(-2, 2, 1), Point3(0, 0, -1), Vec3(0, 1, 0), 20, aspectRatio);
 
     // Render
     std::cout << "P3\n" << imgWidth << ' ' << imgHeight << "\n255\n";
