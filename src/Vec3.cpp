@@ -1,4 +1,5 @@
 #include "Vec3.hpp"
+#include "Common.hpp"
 
 namespace rt
 {
@@ -22,5 +23,17 @@ namespace rt
     Vec3 randomUnitVector()
     {
         return unitVector(randomInUnitSphere());
+    }
+
+    Vec3 randomInUnitDisk()
+    {
+        while (true) {
+            if (auto point = Vec3(randomDouble(-1, 1), randomDouble(-1, 1), 0); point.lengthSquared() >= 1) {
+                continue;
+            }
+            else {
+                return point;
+            }
+        }
     }
 }

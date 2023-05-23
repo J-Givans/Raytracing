@@ -299,6 +299,10 @@ namespace rt
 
         return refractedPerpendicular + refractedParallel;
     }
+
+    /// \brief Generate random rays originating from inside a disk centered at a point
+    /// \returns A random ray originating from a point
+    extern Vec3 randomInUnitDisk();
 }
 
 #endif
