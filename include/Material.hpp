@@ -46,6 +46,26 @@ namespace rt
     private:
         Colour m_albedo;
     };
+
+    /// \brief This class describes the properties of rays and objects with metal materials
+    class Metal : public Material
+    {
+    public:
+        /// \brief Create a metallic material with the given albedo
+        /// \param[in] albedo The attenuation of rays incident to the metallic object
+        explicit Metal(Colour const& albedo) noexcept;
+
+        /// \brief Determine if a scattered ray is produced from the interaction of an incident ray with an object
+        /// \param[in] incidentRay The incoming ray to the object
+        /// \param[inout] record A description of ray-object intersections
+        /// \param[in] attenuation The degree to which the colour intensity should be reduced
+        /// \param[inout] scattered The reflected ray
+        /// \returns True if a scattered ray was produced, false otherwise
+        bool scatter(Ray const& incidentRay, HitRecord const& record, Colour& attenuation, Ray& scattered) const override;
+
+    private:
+        Colour m_albedo;
+    };
 }
 
 #endif

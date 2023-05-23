@@ -22,4 +22,22 @@ namespace rt
         
         return true;
     }
+
+    Metal::Metal(Colour const& albedo) noexcept : m_albedo(albedo)
+    {
+    }
+
+    bool Metal::scatter(Ray const& incidentRay, HitRecord const& record, Colour& attenuation, Ray& scattered) const
+    {
+        auto reflectedRay = getReflectedRay(unitVector(incidentRay.getDirection()), record.normal);
+        scattered = Ray(record.point, reflectedRay);
+        attenuation = m_albedo;
+
+        if (dot(scattered.getDirection(), record.normal) > 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }
