@@ -147,6 +147,16 @@ namespace rt
             return dotProduct;
         }
 
+        /// \brief Determine whether the vector is close to zero in all dimensions
+        /// \retval true Vector is close to zero in all dimensions
+        /// \retval false Otherwise
+        constexpr bool isNearZero() const& noexcept
+        {
+            // Return true if the vector is close to zero in all dimensions
+            auto const s = 1e-8;
+            return (std::fabs(m_vec[0]) < s) and (std::fabs(m_vec[1]) < s) and (std::fabs(m_vec[2]) < s);
+        }
+
         /// \brief Create a new vector with randomly generated coordinates
         /// \returns A new vector with randomly-generated coordinates
         static Vec3 random();
