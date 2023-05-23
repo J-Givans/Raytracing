@@ -1,9 +1,7 @@
-#include "Common.hpp"
 #include "Colour.hpp"
 #include "HittableList.hpp"
 #include "Sphere.hpp"
 #include "Camera.hpp"
-#include "Vec3.hpp"
 #include "Material.hpp"
 
 #include <iostream>
