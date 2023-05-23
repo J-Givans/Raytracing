@@ -16,11 +16,13 @@ target_sources(raytracer
         "${PROJECT_SOURCE_DIR}/include/Hittable.hpp"
         "${PROJECT_SOURCE_DIR}/include/HittableList.hpp"
         "${PROJECT_SOURCE_DIR}/include/Sphere.hpp"
+        "${PROJECT_SOURCE_DIR}/include/Material.hpp"
     PRIVATE
         Vec3.cpp
         Colour.cpp
         HittableList.cpp
         Sphere.cpp
+        Material.cpp
 )
 
 target_compile_options(raytracer
