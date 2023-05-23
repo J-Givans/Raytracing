@@ -4,6 +4,7 @@
 #include "Sphere.hpp"
 #include "Camera.hpp"
 #include "Vec3.hpp"
+#include "Material.hpp"
 
 #include <iostream>
 
@@ -66,8 +67,14 @@ Colour rayColour(Ray const& ray, Hittable const& world, int recursionDepth) noex
     }
 
     if (HitRecord record; world.hit(ray, 0.001, infinity, record)) {
-        Point3 target = record.point + record.normal + randomUnitVector();
-        return 0.5 * rayColour(Ray(record.point, target - record.point), world, recursionDepth - 1);
+        Ray scattered;
+        
+        if (Colour attenuation; record.materialPtr->scatter(ray, record, attenuation, scattered)) {
+            return attenuation * rayColour(scattered, world, recursionDepth - 1);
+        }
+        else {
+            return Colour(0, 0, 0);
+        }
     }
 
     Vec3 unitDirection = unitVector(ray.getDirection());    // scale the ray direction to unit length
