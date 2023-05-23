@@ -11,9 +11,12 @@ namespace rt
     {
     public:
         /// \brief Create a camera with the specified field of view and aspect ratio
+        /// \param[in] lookFrom The location of the camera
+        /// \param[in] lookAt The location the camera is facing
+        /// \param[in] viewUp The sideways tilt of the camera
         /// \param[in] verticalFovInDegrees The angle you see through the portal
         /// \param[in] aspectRatio The ratio between the image width and height
-        constexpr Camera(double verticalFovInDegrees, double aspectRatio) noexcept;
+        constexpr Camera(Point3 lookFrom, Point3 lookAt, Vec3 viewUp, double verticalFovInDegrees, double aspectRatio) noexcept;
 
         /// \brief 
         /// \param[in] u
@@ -29,7 +32,8 @@ namespace rt
     };
 
     // Create a new Camera and define its position relative to the viewport
-    constexpr Camera::Camera(double verticalFovInDegrees, double aspectRatio) noexcept
+    constexpr Camera::Camera(Point3 lookFrom, Point3 lookAt, Vec3 viewUp, double verticalFovInDegrees, double aspectRatio) noexcept
+    :   m_origin(lookFrom)
     {
         auto theta = degreesToRadians(verticalFovInDegrees);
         auto h = std::tan(theta / 2);
@@ -37,11 +41,14 @@ namespace rt
         double const viewportHeight = 2.0 * h;  // the height of the viewport (or scene)
         double const viewportWidth = aspectRatio * viewportHeight; // the width of the viewport (or scene)
 
-        constexpr double focalLength = 1.0; // the distance from the camera to the viewport
+        auto const w = unitVector(lookFrom - lookAt);
+        auto const u = unitVector(cross(viewUp, w));
+        auto const v = cross(w, u);
 
-        m_horizontal = Vec3(viewportWidth, 0.0, 0.0);   // offset vector relative to the viewport width
-        m_vertical = Vec3(0.0, viewportHeight, 0.0);    // offset vector relative to the viewport height
-        m_lowerLeftCorner = m_origin - (m_horizontal / 2) - (m_vertical / 2) - Vec3(0, 0, focalLength); // lower-left corner of the viewport
+        m_horizontal = viewportWidth * u;
+        m_vertical = viewportHeight * v;
+
+        m_lowerLeftCorner = m_origin - (m_horizontal / 2) - (m_vertical / 2) - w; // lower-left corner of the viewport
     }
 
     constexpr Ray Camera::getRay(double const u, double const v) const& noexcept
