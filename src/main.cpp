@@ -28,8 +28,8 @@ int main()
     HittableList world;
 
     auto materialGround = std::make_shared<Lambertian>(Colour(0.8, 0.8, 0.0));
-    auto materialCenter = std::make_shared<Lambertian>(Colour(0.7, 0.3, 0.3));
-    auto materialLeft = std::make_shared<Metal>(Colour(0.8, 0.8, 0.8), 0.3);
+    auto materialCenter = std::make_shared<Dielectric>(1.5);
+    auto materialLeft = std::make_shared<Dielectric>(1.5);
     auto materialRight = std::make_shared<Metal>(Colour(0.8, 0.6, 0.2), 1.0);
 
     world.add(std::make_shared<Sphere>(Point3(0.0, -100.5, -1.0), 100.0, materialGround));
