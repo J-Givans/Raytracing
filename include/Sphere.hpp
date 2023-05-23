@@ -4,8 +4,12 @@
 #include "Hittable.hpp"
 #include "Vec3.hpp"
 
+#include <memory>
+
 namespace rt
 {
+    class Material;    // forward declaration
+
     class Sphere : public Hittable
     {
     public:
@@ -15,7 +19,7 @@ namespace rt
         /// \brief Constructor
         /// \param[in] center The center of the sphere
         /// \param[in] radius The radius of the sphere
-        Sphere(Point3 center, double radius) noexcept;
+        Sphere(Point3 center, double radius, std::shared_ptr<Material> mat) noexcept;
 
         /// \brief Determine if the ray hit the sphere
         /// \param[in] ray The ray under investigation
@@ -29,6 +33,7 @@ namespace rt
     private:
         Point3 m_center {};
         double m_radius {};
+        std::shared_ptr<Material> m_materialPtr;
     };
 }
 

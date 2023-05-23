@@ -2,7 +2,8 @@
 
 namespace rt
 {
-    Sphere::Sphere(Point3 center, double radius) noexcept : m_center(center), m_radius(radius)
+    Sphere::Sphere(Point3 center, double radius, std::shared_ptr<Material> mat) noexcept 
+    :    m_center(center), m_radius(radius), m_materialPtr(mat)
     {
     }
 
@@ -37,6 +38,7 @@ namespace rt
 
         Vec3 const outwardNormal = (record.point - m_center) / m_radius;
         record.setFaceNormal(ray, outwardNormal);
+        record.materialPtr = m_materialPtr;
 
         return true;
     }
