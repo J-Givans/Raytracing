@@ -67,6 +67,16 @@ namespace rt
         Colour m_albedo;
         double m_fuzziness;
     };
+
+    /// \brief This class describes the behaviour of light when it travels through dielectric materials
+    class Dielectric : public Material
+    {
+    public:
+        explicit Dielectric(double indexOfRefraction);
+
+    private:
+        double m_refractiveIndex;
+    };
 }
 
 #endif

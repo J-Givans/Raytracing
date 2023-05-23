@@ -40,4 +40,8 @@ namespace rt
             return false;
         }
     }
+
+    Dielectric::Dielectric(double refractiveIndex) : m_refractiveIndex(refractiveIndex)
+    {
+    }
 }
