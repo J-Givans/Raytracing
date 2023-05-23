@@ -274,6 +274,15 @@ namespace rt
     /// \brief Pick random points in a unit sphere and then normalise them
     /// \returns A normalised point vector
     extern Vec3 randomUnitVector();
+
+    /// \brief Get the reflected ray given the incident ray and the normal
+    /// \param[in] incidentRay The ray of incidence
+    /// \param[in] normal The normal at the point of intersection
+    /// \returns The reflected ray
+    constexpr Vec3 getReflectedRay(Vec3 const& incidentRay, Vec3 const& normal)
+    {
+        return incidentRay - (2 * dot(incidentRay, normal) * normal);
+    }
 }
 
 #endif
