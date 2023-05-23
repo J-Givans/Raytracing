@@ -20,7 +20,7 @@ namespace rt
         /// \param[in] incidentRay The incoming ray to the object
         /// \param[inout] record A description of ray-object intersections
         /// \param[in] attenuation The degree to which the colour intensity should be reduced
-        /// \param[inout] scattered The outward ray
+        /// \param[inout] scattered The reflected ray
         /// \returns True if a scattered ray was produced, false otherwise
         virtual bool scatter(Ray const& incidentRay, HitRecord const& record, Colour& attenuation, Ray& scattered) const = 0;
 
@@ -39,7 +39,7 @@ namespace rt
         /// \param[in] incidentRay The incoming ray to the object
         /// \param[inout] record A description of ray-object intersections
         /// \param[in] attenuation The degree to which the colour intensity should be reduced
-        /// \param[inout] scattered The outward ray
+        /// \param[inout] scattered The reflected ray
         /// \returns True if a scattered ray was produced, false otherwise
         bool scatter(Ray const& incidentRay, HitRecord const& record, Colour& attenuation, Ray& scattered) const override;
 
