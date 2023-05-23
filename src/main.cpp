@@ -8,10 +8,13 @@
 
 using namespace rt;
 
-/// \brief Linearly blend white and blue colours
-/// \param[in] ray The ray whose colour at a point is to be computed
-/// \returns A blended colour of white and blue
-Colour rayColour(Ray const& ray, Hittable const& world, int recursionDepth) noexcept;
+namespace
+{
+    /// \brief Linearly blend white and blue colours
+    /// \param[in] ray The ray whose colour at a point is to be computed
+    /// \returns A blended colour of white and blue
+    Colour rayColour(Ray const& ray, Hittable const& world, int recursionDepth) noexcept;
+}
 
 int main()
 {
@@ -71,28 +74,31 @@ int main()
     return EXIT_SUCCESS;
 }
 
-Colour rayColour(Ray const& ray, Hittable const& world, int recursionDepth) noexcept
+namespace 
 {
-    // If we've exceeded the ray bounce limit, no more light is gathered
-    if (recursionDepth <= 0) {
-        return Colour(0, 0, 0);
-    }
-
-    if (HitRecord record; world.hit(ray, 0.001, infinity, record)) {
-        Ray scattered;
-        
-        if (Colour attenuation; record.materialPtr->scatter(ray, record, attenuation, scattered)) {
-            return attenuation * rayColour(scattered, world, recursionDepth - 1);
-        }
-        else {
+    Colour rayColour(Ray const& ray, Hittable const& world, int recursionDepth) noexcept
+    {
+        // If we've exceeded the ray bounce limit, no more light is gathered
+        if (recursionDepth <= 0) {
             return Colour(0, 0, 0);
         }
-    }
 
-    Vec3 unitDirection = unitVector(ray.getDirection());    // scale the ray direction to unit length
-    auto const t = 0.5 * (unitDirection.y() + 1.0);
-    
-    // Linearly blend white and blue depending on the height of the y coordinate
-    // blendedValue = (1 - t) * startValue + t * endValue
-    return (1.0 - t) * Colour(1.0, 1.0, 1.0) + t * Colour(0.5, 0.7, 1.0);
+        if (HitRecord record; world.hit(ray, 0.001, infinity, record)) {
+            Ray scattered;
+
+            if (Colour attenuation; record.materialPtr->scatter(ray, record, attenuation, scattered)) {
+                return attenuation * rayColour(scattered, world, recursionDepth - 1);
+            }
+            else {
+                return Colour(0, 0, 0);
+            }
+        }
+
+        Vec3 unitDirection = unitVector(ray.getDirection());    // scale the ray direction to unit length
+        auto const t = 0.5 * (unitDirection.y() + 1.0);
+
+        // Linearly blend white and blue depending on the height of the y coordinate
+        // blendedValue = (1 - t) * startValue + t * endValue
+        return (1.0 - t) * Colour(1.0, 1.0, 1.0) + t * Colour(0.5, 0.7, 1.0);
+    }
 }
